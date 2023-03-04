@@ -1,6 +1,3 @@
-<?php $page_title = 'Events';
-include TEMPLATE_PARTS . '_header.php'; ?>
-
 <?php if (empty($event)) :
   echo "No events with this id";
 ?>

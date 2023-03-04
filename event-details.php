@@ -13,11 +13,13 @@ if (!isset($_SESSION['user_id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-  
-  <head><?php $title = "Events";
+
+<head><?php $title = "Event";
       include TEMPLATES . "_head.php"; ?></head>
 
 <body>
+  <?php $page_title = 'Events';
+  include TEMPLATE_PARTS . '_header.php'; ?>
   <main>
     <?php include FUNCTIONS . "event_render.php"; ?>
   </main>

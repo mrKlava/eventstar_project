@@ -31,10 +31,10 @@
               <a class="nav-link" href="events.php">Events</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="my_events.php">My events</a>
+              <a class="nav-link" href="events-registered.php?id=<?=$_SESSION['user_id']?>">My events</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="profile.php">Profile</a>
+              <a class="nav-link" href="user.php?id=<?=$_SESSION['user_id']?>">Profile</a>
             </li>
 
             <!-- ORGANIZATOR -->
@@ -43,7 +43,10 @@
               <hr>
               <h6> Organizator menu </h6>
             <li class="nav-item">
-              <a class="nav-link" href="organized_events.php">Manage events</a>
+              <a class="nav-link" href="events-manager.php?id=<?=$_SESSION["user_id"]?>">Manage events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="events-editor.php?id=<?=$_SESSION["user_id"]?>">Create Event</a>
             </li>
             <?php endif ?>
 
@@ -53,18 +56,18 @@
               <hr>
               <h6> Admin menu </h6>
               <li class="nav-item">
-                <a class="nav-link" href="user_list.php">User List</a>
+                <a class="nav-link" href="user-table.php">User List</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="event_list.php">Events List</a>
+                <a class="nav-link" href="events-table.php">Events List</a>
               </li>
             <?php endif ?>
             </ul>
 
-            <a class="btn btn-primary" href="api/user_logout.php">Log out</a>
+          </div>
+          
+          <a class="btn btn-primary" href="api/user_logout.php">Log out</a>
         </div>
-
       </div>
-    </div>
-  </nav>
+    </nav>
 </header>

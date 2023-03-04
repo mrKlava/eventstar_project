@@ -1,13 +1,8 @@
 <?php
+session_start(); 
+if (!isset($_SESSION['user_id'])) header('location:login.php');
 include './config/config.php';
 include DB;
-
-session_start(); 
-
-if (!isset($_SESSION['user_id'])) {
-  header('location:login.php');
-}
-
 ?> 
 
 <!DOCTYPE html>
