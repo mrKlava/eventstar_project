@@ -1,40 +1,44 @@
 <?php
+session_start();
+if (isset($_SESSION['user_id'])) header('location:index.php');
+
 include './config/config.php';
 include DB;
-
-session_start();
-
-if (isset($_SESSION['user_id'])) {
-  header('location:index.php');
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head><?php $title="Login"; include TEMPLATES . "_head.php";?></head>
+<head><?php $title = "Login";
+      include TEMPLATES . "_head.php"; ?></head>
 
-<body>
-
-  <?php
-  if (isset($_SESSION['error'])) {
-    echo $_SESSION['error'];
-    unset($_SESSION['error']);
-  }
-  ?>
-  <main>
-    <a href="register.php">Register</a>
-    <h1>Login</h1>
-    <form action="./api/user_login.php" method="post">
-      <div>
-        <label for="email">Email</label>
-        <input type="text" name="email" required>
+<body class="remove-header">
+  <main class="container vh-100 d-flex flex-column justify-content-center align-items-center">
+    <h1 class="title mb-5 text-center">Login</h1>
+    <form class="row mb-3 border rounded-3 px-3 py-5" action="./api/user_login.php" method="post">
+      <div class="form-floating form-outline mb-4">
+        <input type="email" id="emailInput" class="form-control" name="email" placeholder="name@example.com" />
+        <label for="emailInput">Email address</label>
       </div>
-      <div>
-        <label for="pwd">Password</label>
-        <input type="password" name="pwd" required>
+      <div class="form-floating form-outline mb-4">
+        <input type="password" id="pwdInput" class="form-control" name="pwd" placeholder="Password" />
+        <label for="pwdInput">Password</label>
       </div>
-      <input type="submit" value="Login">
+      <p class="text-danger mb-4 text-center">
+        <?php
+        if (isset($_SESSION['error'])) {
+          echo $_SESSION['error'];
+          unset($_SESSION['error']);
+        }
+        ?>
+      </p>
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
+        <button class="btn btn-primary mb-3 col-3">Login</button>
+        <div class="text-center">
+          <span>Not registered?</span>
+          <a href="register.php">Register</a>
+        </div>
+      </div>
     </form>
   </main>
 </body>
