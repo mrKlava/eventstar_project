@@ -41,13 +41,6 @@ if ( isset( $_POST["name"]) && isset( $_POST["surname"]) && isset( $_POST["email
     $request->bindParam(':hash', $hash);
     $request->bindParam(':birth_date', $birth_date);
 
-    var_dump($request);
-    var_dump($email);
-    var_dump($name);
-    var_dump($surname);
-    var_dump($hash);
-    var_dump($birth_date);
-
     $request->execute();
 
     header('location:../login.php');

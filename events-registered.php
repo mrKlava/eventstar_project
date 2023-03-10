@@ -16,6 +16,7 @@ include API . 'events_user_fetch.php';
   <?php $page_title = 'My Events'; include TEMPLATE_PARTS . '_header.php';?>
 
   <main class="container">
+    <?php var_dump($event_list)?>
     <?php include FUNCTIONS . 'events_list_render.php'; ?>
   </main>
 </body>

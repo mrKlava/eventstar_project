@@ -1,5 +1,10 @@
 <?php
 
+/* TODO 
+- fix issue with PROCEDURE returning null on event list
+
+*/
+
 $id = $_GET["id"];
 
 // check if session user id matches with requested user id
@@ -13,4 +18,16 @@ $request = $db->prepare("SELECT * FROM events_info_view");
 $request->execute();
 
 $events = $request->fetchAll(PDO::FETCH_ASSOC);
+
+
+$get_event_list = $db->prepare("CALL PR_get_user_events(USER_ID)");
+$get_event_list->bindParam(":USER_ID", $_SESSION['user_id'], PDO::PARAM_INT);
+
+$get_event_list->execute();
+
+$event_list = $get_event_list->fetchAll(PDO::FETCH_ASSOC);
+
+// while($row = $get_event_list->fetchAll(PDO::FETCH_ASSOC)) {
+//   var_dump($row);
+// }
 

@@ -1,5 +1,5 @@
-<header>
-  <div>
+<header class="header">
+  <div class="container title-page">
     <h1><?= $page_title ?></h1>
   </div>
 
@@ -34,7 +34,7 @@
               <a class="nav-link" href="events-registered.php?id=<?=$_SESSION['user_id']?>">My events</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="user.php?id=<?=$_SESSION['user_id']?>">Profile</a>
+              <a class="nav-link" href="user-editor.php?id=<?=$_SESSION['user_id']?>">Profile</a>
             </li>
 
             <!-- ORGANIZATOR -->
@@ -66,7 +66,7 @@
 
           </div>
           
-          <a class="btn btn-primary" href="api/user_logout.php">Log out</a>
+          <a class="btn btn-primary rounded-0" href="api/user_logout.php">Log out</a>
         </div>
       </div>
     </nav>

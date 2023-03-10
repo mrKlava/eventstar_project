@@ -1,6 +1,6 @@
-<?php
+<?php 
 
-$id = $_GET["id"];
+$id = htmlspecialchars($_GET["id"]);
 
 // check if session user id matches with requested user id
 if ($_SESSION['user_id'] != $id) {
@@ -10,6 +10,10 @@ if ($_SESSION['user_id'] != $id) {
 
 $request = $db->prepare("SELECT * FROM users WHERE user_id = ?");
 $request->execute([$id]);
+
+
+
+
 
 $user = $request->fetch(PDO::FETCH_ASSOC);
 

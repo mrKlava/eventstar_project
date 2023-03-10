@@ -26,18 +26,31 @@ if (isset($_POST["email"]) && isset($_POST["pwd"])) {
         $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['name'] = $user['name'];
         
+        // add user roles to session
         $get_roles = $db->prepare("SELECT role_id FROM user_role WHERE user_id = :user_id");
         $get_roles->bindParam(':user_id', $user['user_id']);
         $get_roles->execute();
     
         $roles = $get_roles->fetchAll(PDO::FETCH_ASSOC);
 
-        // add roles to to 
         if ($roles) {
           foreach ($roles as $role) $_SESSION["roles"][] = intval($role['role_id']);
         } else {
           $_SESSION["roles"] = null;
         }
+
+
+        // add registered event list
+        $get_event_list = $db->prepare("CALL PR_get_user_events(:user_id)");
+        $get_event_list->bindParam(':user_id', $user['user_id']);
+        $get_event_list->execute();
+
+        $event_list = $get_event_list->fetchAll(PDO::FETCH_ASSOC);
+
+        
+
+        foreach ($event_list as $event) $_SESSION["event_list"][] = intval($event['event_id']);
+
         
         // redirect to index
         header('location:../index.php');
