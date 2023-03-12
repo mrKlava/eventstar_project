@@ -41,12 +41,12 @@
 
             <?php if ($_SESSION["roles"] != null && in_array(4, $_SESSION["roles"])): ?>
               <hr>
-              <h6> Organizator menu </h6>
+              <h6 class="mb-3"> Organizator menu </h6>
             <li class="nav-item">
               <a class="nav-link" href="events-manager.php?id=<?=$_SESSION["user_id"]?>">Manage events</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="events-editor.php?id=<?=$_SESSION["user_id"]?>">Create Event</a>
+              <a class="nav-link" href="event-editor.php?event_id=new">Create Event</a>
             </li>
             <?php endif ?>
 
@@ -54,7 +54,7 @@
 
             <?php if ($_SESSION["roles"] != null && in_array(1, $_SESSION["roles"])): ?>
               <hr>
-              <h6> Admin menu </h6>
+              <h6 class="mv-3"> Admin menu </h6>
               <li class="nav-item">
                 <a class="nav-link" href="user-table.php">User List</a>
               </li>

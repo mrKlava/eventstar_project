@@ -5,7 +5,7 @@ if (!in_array(1, $_SESSION['roles']) && !in_array(4, $_SESSION['roles'])) header
 
 include './config/config.php';
 include DB;
-include API . './event_fetch.php';
+include API . './event_editor_fetch.php';
 ?>
 
 
@@ -27,18 +27,23 @@ include API . './event_fetch.php';
 
   <main class="my-5">
     <section class="container">
-      <form action="" method="POST" class="row mb-3 border rounded-3 px-3 py-5">
+      <form action="./api/user_update.php?id=<?=$_GET["event_id"]?>" method="POST" class="row mb-3 border rounded-3 px-3 py-5">
 
         <div class="row mb-3">
           <div class="col-sm-3 mb-4">
-            <h4>Event ID : <span class="ms-2"><?= $event["event_id"] ?></span></h4>
+            <?php if($_GET["event_id"] && $_GET["event_id"] != "new") : ?>
+              <h4>Event ID : <span class="ms-2"><?= $event["event_id"] ?></span></h4>
+            <?php else : ?>
+              <h4>New event</h4>
+            <?php endif ?>
           </div>
           <div class="col-sm-9 mb-4">
             <div class="row mb-3">
-              <h6>User ID: <span class="ms-2"><?= $_SESSION["user_id"] ?></span></h6>
+              <!-- NEED TO CHANGE FOR ORGANIZATOR ID -->
+              <h6>Organizator ID : <span class="ms-2"><?= $event["organizator_id"] ?></span></h6>
             </div>
             <div class="row">
-              <h6>Organizator Name: <span class="ms-2"><?= $event["organizator_name"] ?></span></h6>
+              <h6>Organizator Name : <span class="ms-2"><?= $event["organizator_name"] ?></span></h6>
             </div>
           </div>
         </div>
@@ -63,7 +68,7 @@ include API . './event_fetch.php';
           </div>
           <div class="col-sm-2 mb-4">
             <label for="min" class="form-label">Minutes*</label>
-            <input type="number" class="form-control date-picker" name="min" value="<?= $event["date"] ?>" min="1" max="59" required>
+            <input type="number" class="form-control date-picker" name="min" value="<?= $event["date"] ?>" min="0" max="59" required>
           </div>
         </div>
 
@@ -105,7 +110,7 @@ include API . './event_fetch.php';
         <div class="row mb-4">
           <div class="col">
             <label for="details" class="form-label">Details*</label>
-            <textarea class="form-control" name="description" style="height: 350px" required><?= $event["details"] ?></textarea>
+            <textarea class="form-control" name="details" style="height: 350px" required><?= $event["description"] ?></textarea>
           </div>
         </div>
 
@@ -121,7 +126,7 @@ include API . './event_fetch.php';
               <option value="5">18+</option>
             </select>
           </div>
-          <div class="col-sm-7 mb-4">
+          <div class="col-sm-7 mb-5">
             <label for="location" class="form-label">Location*</label>
             <select class="form-select" name="location" aria-label="Select Location" required>
               <option selected>Select Location</option>

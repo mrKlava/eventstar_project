@@ -61,6 +61,10 @@ if ( isset( $_POST["name"]) && isset( $_POST["surname"]) && isset( $_POST["email
         $change_pwd->bindParam(':hash', $hash);
 
         $change_pwd->execute();
+      } else {
+        $_SESSION["error"] = "Password is not matching";
+        header("location:../user-editor.php?id=$id");
+        return;
       }
     }
 
@@ -78,8 +82,10 @@ if ( isset( $_POST["name"]) && isset( $_POST["surname"]) && isset( $_POST["email
     
     header("location:../user-editor.php?id=$id");
     return;
+    
+  } else {
+    $_SESSION["error"] = "You need to fill all required fields";
+    header("location:../user-editor.php?id=$id");
+    return;
   }
-} else {
-  $_SESSION["error"] = "You need to fill all required fields";
-  header("location:../user-editor.php?id=$id");
-}
+} 

@@ -15,7 +15,7 @@ include API . 'events_user_fetch.php';
 <body>
   <?php $page_title = 'Events Manager'; include TEMPLATE_PARTS . '_header.php';?>
 
-  <main class="container">
+  <main class="container-fluid">
     <?php include FUNCTIONS . 'events_table_render.php'; ?>
   </main>
 </body>
