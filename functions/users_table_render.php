@@ -1,10 +1,18 @@
-<table>
+<!-- TODO 
+- make search functionality
+- filtering
+- pagination
+ -->
+
+<table class="table table-striped table-hover table-sm">
   <thead>
     <tr>
-      <th><?= $users[0]['user_id'] ?></th>
-      <th><?= $users[0]['email'] ?></th>
-      <th><?= $users[0]['name'] ?></th>
-      <th>Link</th>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>EDIT</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +21,9 @@
         <td><?= $user['user_id'] ?></td>
         <td><?= $user['email'] ?></td>
         <td><?= $user['name'] ?></td>
+        <td><?= $user['surname'] ?></td>
         <td><a href="event-editor.php?user_id=<?=$user['user_id']?>">EDIT</a></td>
+        <td>X</td>
       </tr>
     <?php endforeach ?>
   </tbody>
