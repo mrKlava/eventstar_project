@@ -26,7 +26,7 @@
         </a>
         </td>
         <td>INT/INT</td>
-        <td><?= $event['date'] ?></td>
+        <td><?= $event['event_date'] ?></td>
         <td><?= $event['city_name'] ?></td>
         <td><a href="event-editor.php?event_id=<?=$event['event_id']?>">EDIT</a></td>
         <td>X</td>

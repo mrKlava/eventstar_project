@@ -27,7 +27,7 @@ include API . './event_editor_fetch.php';
 
   <main class="my-5">
     <section class="container">
-      <form action="./api/user_update.php?id=<?=$_GET["event_id"]?>" method="POST" class="row mb-3 border rounded-3 px-3 py-5">
+      <form action="./api/event_update.php?event_id=<?=$_GET["event_id"]?>" method="POST" class="row mb-3 border rounded-3 px-3 py-5">
 
         <div class="row mb-3">
           <div class="col-sm-3 mb-4">
@@ -39,7 +39,6 @@ include API . './event_editor_fetch.php';
           </div>
           <div class="col-sm-9 mb-4">
             <div class="row mb-3">
-              <!-- NEED TO CHANGE FOR ORGANIZATOR ID -->
               <h6>Organizator ID : <span class="ms-2"><?= $event["organizator_id"] ?></span></h6>
             </div>
             <div class="row">
@@ -64,11 +63,11 @@ include API . './event_editor_fetch.php';
           </div>
           <div class="col-sm-2 mb-4">
             <label for="hour" class="form-label">Hour*</label>
-            <input type="number" class="form-control date-picker" name="hour" value="<?= $event["date"] ?>" min="0" max="23" required>
+            <input type="number" class="form-control date-picker" name="hour" value="<?= $event["hour"] ?>" min="0" max="23" required>
           </div>
           <div class="col-sm-2 mb-4">
             <label for="min" class="form-label">Minutes*</label>
-            <input type="number" class="form-control date-picker" name="min" value="<?= $event["date"] ?>" min="0" max="59" required>
+            <input type="number" class="form-control date-picker" name="min" value="<?= $event["min"] ?>" min="0" max="59" required>
           </div>
         </div>
 
@@ -97,7 +96,7 @@ include API . './event_editor_fetch.php';
         <div class="row">
           <div class="col mb-4">
             <label for="image" class="form-label">Image</label>
-            <input type="text" class="form-control" name="image" value="<?= $event["name"] ?>" required>
+            <input type="text" class="form-control" name="image" value="<?= $event["name"] ?>">
           </div>
         </div>
 

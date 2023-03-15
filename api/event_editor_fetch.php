@@ -21,6 +21,13 @@ if ($id != "new") {
   
   $event = $get_event->fetch(PDO::FETCH_ASSOC);
 
+  // handle date for form
+  $date_obj = date_create($event["event_date"]);
+
+  $event["date"] = $date_obj->format('Y-m-d');
+  $event["hour"] = $date_obj->format('H');
+  $event["min"] =  $date_obj->format('i');
+
   // check if exists or is created by this user
   if (!$event) {
     header('location:not-found.php');

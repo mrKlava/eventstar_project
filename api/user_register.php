@@ -4,9 +4,22 @@ include "../db/db.php";
 session_start();
 
 
-if ( isset( $_POST["name"]) && isset( $_POST["surname"]) && isset( $_POST["email"]) && isset( $_POST["bdate"]) && isset( $_POST["pwd"]) ){
-  if ( $_POST["name"] != '' && $_POST["surname"] != '' && $_POST["email"] != '' && $_POST["bdate"] != '' && $_POST["pwd"] != '' && $_POST["rePwd"] != '') {
-    
+if (
+  isset($_POST["name"])
+  && isset($_POST["surname"])
+  && isset($_POST["email"])
+  && isset($_POST["bdate"])
+  && isset($_POST["pwd"])
+) {
+  if (
+    $_POST["name"] != ''
+    && $_POST["surname"] != ''
+    && $_POST["email"] != ''
+    && $_POST["bdate"] != ''
+    && $_POST["pwd"] != ''
+    && $_POST["rePwd"] != ''
+  ) {
+
     var_dump($_POST);
 
     if ($_POST["pwd"] != $_POST["rePwd"]) {

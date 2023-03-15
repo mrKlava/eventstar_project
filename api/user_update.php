@@ -51,8 +51,8 @@ if ( isset( $_POST["name"]) && isset( $_POST["surname"]) && isset( $_POST["email
 
 
     // check password for update and update
-    if(isset( $_POST["pwd"]) && isset( $_POST["rePwd"])) {
-      if(($_POST["pwd"] != '' && $_POST["rePwd"]) && $_POST["pwd"] == $_POST["rePwd"]) {
+    if(isset($_POST["pwd"]) && isset( $_POST["rePwd"])) {
+      if(($_POST["pwd"] != '' && $_POST["rePwd"] != '') && $_POST["pwd"] == $_POST["rePwd"]) {
         $hash = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
 
         $change_pwd = $db->prepare("UPDATE users SET hash = :hash WHERE user_id = :id");
@@ -88,4 +88,4 @@ if ( isset( $_POST["name"]) && isset( $_POST["surname"]) && isset( $_POST["email
     header("location:../user-editor.php?id=$id");
     return;
   }
-} 
+}

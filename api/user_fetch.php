@@ -12,8 +12,4 @@ $request = $db->prepare("SELECT * FROM users WHERE user_id = ?");
 $request->execute([$id]);
 
 
-
-
-
 $user = $request->fetch(PDO::FETCH_ASSOC);
-

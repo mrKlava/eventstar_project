@@ -13,6 +13,7 @@ include DB;
       include TEMPLATES . "_head.php"; ?></head>
 
 <body class="remove-header">
+
   <main class="container vh-100 d-flex flex-column justify-content-center align-items-center">
     <h1 class="title mb-5 text-center">Login</h1>
     <form class="row mb-3 border rounded-3 px-3 py-5" action="./api/user_login.php" method="post">
@@ -41,6 +42,7 @@ include DB;
       </div>
     </form>
   </main>
+  
 </body>
 
 </html>
