@@ -1,4 +1,4 @@
-CREATE VIEW event_registrations_view
+CREATE VIEW VIEW_event_registration_count
 AS
 SELECT R.event_id
 		,COUNT(R.user_id) AS registrations
@@ -8,13 +8,13 @@ SELECT R.event_id
 
 
 
-CREATE VIEW events_info_view
+CREATE VIEW VIEW_events_list
 AS
 SELECT E.event_id
 		,E.event_name
         ,E.description
         ,E.details
-        ,E.max_person
+        ,E.person_max
         ,ER.registrations
         ,E.event_date
         ,E.register_deadline
@@ -36,6 +36,6 @@ SELECT E.event_id
     	ON E.organizator_id = O.organizator_id
     INNER JOIN users AS U
     	ON O.user_id = U.user_id
-    INNER JOIN event_registrations_view AS ER
+    INNER JOIN VIEW_event_registration_count AS ER
     	ON ER.event_id = E.event_id
 ;
