@@ -15,8 +15,8 @@
       <div class="row mb-3 border rounded-3 px-3 py-3 mx-1">
         <div class="col-sm-8 mb-3">
           <p>Date: <span><?= $event['date'] ?></span> <span><?= $event['hour'] ?>:<?= $event['min'] ?></span></p>
-          <?php if ($event["max_person"]) : ?>
-            <p>Places left: <?= $event["max_person"] - $event['registrations'] ?></p>
+          <?php if ($event["person_max"]) : ?>
+            <p>Places left: <?= $event["person_max"] - $event['registrations'] ?></p>
           <?php endif ?>
           <p>City: <?= $event["city_name"] ?></p>
           <p>Location: <?= $event["location_name"] ?></p>

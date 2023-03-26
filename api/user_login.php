@@ -40,16 +40,26 @@ if (isset($_POST["email"]) && isset($_POST["pwd"])) {
         }
 
 
+        if (in_array(4, $_SESSION['roles'])) {
+          $get_org_id = $db->prepare("SELECT organizator_id FROM organizators WHERE user_id = :user_id");
+          $get_org_id->bindParam('user_id', $user['user_id']);
+          $get_org_id->execute();
+          
+          $org_id = $get_org_id->fetch(PDO::FETCH_ASSOC);
+
+          $_SESSION['org_id'] = $org_id['organizator_id'];
+        }
+
+
         // add registered event list
-        $get_event_list = $db->prepare("CALL PR_get_user_events(:user_id)");
-        $get_event_list->bindParam(':user_id', $user['user_id']);
-        $get_event_list->execute();
+        // $get_event_list = $db->prepare("CALL PR_get_user_events(:user_id)");
+        // $get_event_list->bindParam(':user_id', $user['user_id']);
+        // $get_event_list->execute();
 
-        $event_list = $get_event_list->fetchAll(PDO::FETCH_ASSOC);
-
+        // $event_list = $get_event_list->fetchAll(PDO::FETCH_ASSOC);
         
 
-        foreach ($event_list as $event) $_SESSION["event_list"][] = intval($event['event_id']);
+        // foreach ($event_list as $event) $_SESSION["event_list"][] = intval($event['event_id']);
 
         
         // redirect to index

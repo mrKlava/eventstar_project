@@ -14,7 +14,7 @@ if ($_SESSION['user_id'] != $id) {
 }
 
 // will need to make s.procedure to get events
-$request = $db->prepare("SELECT * FROM events_info_view");
+$request = $db->prepare("SELECT * FROM VIEW_events_list");
 $request->execute();
 
 $events = $request->fetchAll(PDO::FETCH_ASSOC);

@@ -10,16 +10,20 @@ if ($_SESSION['user_id'] != $id) {
 
 /* Handle for orgonizator */
 
-if (in_array(4, $_SESSION["roles"]))
+if (in_array(4, $_SESSION["roles"])) {
+  $request = $db->prepare("SELECT * FROM VIEW_events_list WHERE organizator_id = :org_id ORDER BY event_id");
+  $request->bindParam(':org_id', $_SESSION['org_id']);
+  $request->execute();
+  
+  $events = $request->fetchAll(PDO::FETCH_ASSOC);
+}
 
 // will need to make s.procedure to get events which are organized by current user
-$request = $db->prepare("SELECT * FROM events_info_view");
-$request->execute();
 
 
 /* Handle for administrator */
 
-if (in_array(1, $_SESSION["roles"]))
+// if (in_array(1, $_SESSION["roles"]))
+// $events = $request->fetchAll(PDO::FETCH_ASSOC);
 
-$events = $request->fetchAll(PDO::FETCH_ASSOC);
 

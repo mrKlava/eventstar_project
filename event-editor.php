@@ -79,7 +79,7 @@ include API . './event_editor_fetch.php';
           <div class="col-sm-4 mb-4">
             <label for="age" class="form-label">Age Rating</label>
             <select class="form-select" name="age" aria-label="Select rating">
-              <option selected>No Rating</option>
+              <option value="NULL" selected>No Rating</option>
               <option value="1">For Kids</option>
               <option value="2">6+</option>
               <option value="3">12+</option>

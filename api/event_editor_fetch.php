@@ -8,15 +8,9 @@
 
 $id = $_GET["event_id"];
 
-// get organizator details
-$get_organizator = $db->prepare("SELECT * FROM organizators WHERE user_id = ?");
-$get_organizator->execute([$_SESSION["user_id"]]);
-
-$organizator = $get_organizator->fetch(PDO::FETCH_ASSOC);
-
 // check if event is NEW or EXISTS
 if ($id != "new") {
-  $get_event = $db->prepare("SELECT * FROM events_info_view WHERE event_id = ?");
+  $get_event = $db->prepare("SELECT * FROM VIEW_events_list WHERE event_id = ?");
   $get_event->execute([$id]);
   
   $event = $get_event->fetch(PDO::FETCH_ASSOC);
@@ -33,7 +27,7 @@ if ($id != "new") {
     header('location:not-found.php');
     $_SESSION["error"] = "Event do not exist";
     return;
-  } else if ($event["organizator_id"] != $organizator["organizator_id"]) {
+  } else if ($event["organizator_id"] != $_SESSION["org_id"]) {
     header('location:not-found.php');
     $_SESSION["error"] = "You are not organizator of this event";
     return;

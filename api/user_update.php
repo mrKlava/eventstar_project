@@ -11,11 +11,19 @@ if ($_SESSION['user_id'] != $id) {
   header('location:../not-found.php');
 }
 
-              /* HANDLE USER INFO */
+    /* HANDLE USER INFO */
 
-// check form except pwd is not empty
-if ( isset( $_POST["name"]) && isset( $_POST["surname"]) && isset( $_POST["email"]) && isset( $_POST["bdate"])) {
-  if ( $_POST["name"] != '' && $_POST["surname"] != '' && $_POST["email"] != '' && $_POST["bdate"] != '') {
+// check form form required fields
+if (isset( $_POST["name"]) 
+  && isset( $_POST["surname"]) 
+  && isset( $_POST["email"]) 
+  && isset( $_POST["bdate"])) {
+  // check if they are not empty
+  if ( $_POST["name"] != '' 
+    && $_POST["surname"] != '' 
+    && $_POST["email"] != '' 
+    && $_POST["bdate"] != '') {
+
 
     // sanitize input
     $name = htmlspecialchars($_POST['name']);
@@ -43,29 +51,11 @@ if ( isset( $_POST["name"]) && isset( $_POST["surname"]) && isset( $_POST["email
 
     $email_exists = $email_check->fetch(PDO::FETCH_ASSOC);
 
+    // if email 
     if ($email_exists) {
       $_SESSION['error'] = "User with same email already exists";
       header("location:../user-editor.php?id=$id");
       return;
-    }
-
-
-    // check password for update and update
-    if(isset($_POST["pwd"]) && isset( $_POST["rePwd"])) {
-      if(($_POST["pwd"] != '' && $_POST["rePwd"] != '') && $_POST["pwd"] == $_POST["rePwd"]) {
-        $hash = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
-
-        $change_pwd = $db->prepare("UPDATE users SET hash = :hash WHERE user_id = :id");
-
-        $change_pwd->bindParam(':id', $id);
-        $change_pwd->bindParam(':hash', $hash);
-
-        $change_pwd->execute();
-      } else {
-        $_SESSION["error"] = "Password is not matching";
-        header("location:../user-editor.php?id=$id");
-        return;
-      }
     }
 
 
@@ -79,13 +69,33 @@ if ( isset( $_POST["name"]) && isset( $_POST["surname"]) && isset( $_POST["email
     $update->bindParam(':birth_date', $birth_date);
 
     $update->execute();
-    
-    header("location:../user-editor.php?id=$id");
-    return;
+
+
+      /* HANDLE PAS UPDATE */
+            
+    // check password for update and update
+    if(isset($_POST["pwd"]) && isset( $_POST["rePwd"])) {
+      // check if password fields are not empty
+      if(($_POST["pwd"] != '' || $_POST["rePwd"] != '')) {
+        if($_POST["pwd"] == $_POST["rePwd"]) {
+          $hash = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
+
+          $change_pwd = $db->prepare("UPDATE users SET hash = :hash WHERE user_id = :id");
+
+          $change_pwd->bindParam(':id', $id);
+          $change_pwd->bindParam(':hash', $hash);
+
+          $change_pwd->execute();
+        } else {
+          $_SESSION["error"] = "Password is not matching";
+        }
+      }
+    }
     
   } else {
     $_SESSION["error"] = "You need to fill all required fields";
-    header("location:../user-editor.php?id=$id");
-    return;
   }
 }
+
+header("location:../user-editor.php?id=$id");
+return;
