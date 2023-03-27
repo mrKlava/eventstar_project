@@ -6,6 +6,7 @@ if (!in_array(1, $_SESSION['roles']) && !in_array(4, $_SESSION['roles'])) header
 include './config/config.php';
 include DB;
 include API . './event_editor_fetch.php';
+include API . './location_fetch.php';
 ?>
 
 
@@ -29,6 +30,15 @@ include API . './event_editor_fetch.php';
     <section class="container">
       <form action="./api/event_update.php?event_id=<?=$_GET["event_id"]?>" method="POST" class="row mb-3 border rounded-3 px-3 py-5">
 
+      <p class="text-danger mb-4 text-center">
+        <?php
+        if (isset($_SESSION['error'])) {
+          echo $_SESSION['error'];
+          unset($_SESSION['error']);
+        }
+        ?>
+      </p>
+
         <div class="row mb-3">
           <div class="col-sm-3 mb-4">
             <?php if($_GET["event_id"] && $_GET["event_id"] != "new") : ?>
@@ -51,8 +61,8 @@ include API . './event_editor_fetch.php';
 
         <div class="row">
           <div class="col mb-4">
-            <label for="name" class="form-label">Name*</label>
-            <input type="text" class="form-control" name="name" value="<?= $event["event_name"] ?>" required>
+            <label for="event_name" class="form-label">Name*</label>
+            <input type="text" class="form-control" name="event_name" value="<?= $event["event_name"] ?>" required>
           </div>
         </div>
 
@@ -74,22 +84,25 @@ include API . './event_editor_fetch.php';
         <div class="row">
           <div class="col-sm-4 mb-4">
             <label for="deadline" class="form-label">Registration Deadline</label>
-            <input type="date" class="form-control date-picker" name="deadline" value="<?= $event["register_deadline"] ?>">
+            <input type="date" class="form-control date-picker" name="register_deadline" value="<?= $event["register_deadline"] ?>">
           </div>
           <div class="col-sm-4 mb-4">
-            <label for="age" class="form-label">Age Rating</label>
-            <select class="form-select" name="age" aria-label="Select rating">
-              <option value="NULL" selected>No Rating</option>
-              <option value="1">For Kids</option>
-              <option value="2">6+</option>
-              <option value="3">12+</option>
-              <option value="4">16+</option>
-              <option value="5">18+</option>
+            <label for="age_rating" class="form-label">Age Rating</label>
+            <select class="form-select" name="age_rating" aria-label="Select rating">
+              
+              <?php $sel_age = $event['age_rating']?>
+
+              <option <?php if($sel_age == NULL) echo('selected')?> value="NULL" disabled>No Rating</option>
+              <option <?php if($sel_age == 1) echo('selected')?> value="1">For Kids</option>
+              <option <?php if($sel_age == 2) echo('selected')?> value="2">6+</option>
+              <option <?php if($sel_age == 3) echo('selected')?> value="3">12+</option>
+              <option <?php if($sel_age == 4) echo('selected')?> value="4">16+</option>
+              <option <?php if($sel_age == 5) echo('selected')?> value="5">18+</option>
             </select>
           </div>
           <div class="col-sm-4 mb-4">
-            <label for="places" class="form-label">Places*</label>
-            <input type="text" class="form-control" name="places" value="<?= $event["registrations"] ?>" required>
+            <label for="person_max" class="form-label">Places*</label>
+            <input type="text" class="form-control" name="person_max" value="<?= $event["person_max"] ?>" required>
           </div>
         </div>
 
@@ -114,26 +127,20 @@ include API . './event_editor_fetch.php';
         </div>
 
         <div class="row">
-          <div class="col-sm-5 mb-4">
-            <label for="city" class="form-label">City*</label>
-            <select class="form-select" name="city" aria-label="Select city" required>
-              <option selected>Select city</option>
-              <option value="1">For Kids</option>
-              <option value="2">6+</option>
-              <option value="3">12+</option>
-              <option value="4">16+</option>
-              <option value="5">18+</option>
-            </select>
-          </div>
-          <div class="col-sm-7 mb-5">
-            <label for="location" class="form-label">Location*</label>
-            <select class="form-select" name="location" aria-label="Select Location" required>
-              <option selected>Select Location</option>
-              <option value="1">Select Location</option>
-              <option value="2">6+</option>
-              <option value="3">12+</option>
-              <option value="4">16+</option>
-              <option value="5">18+</option>
+          <div class="mb-4">
+            <label for="location_id" class="form-label">City & Location*</label>
+            <select class="form-select" name="location_id" aria-label="Select city" required>
+              <?php $sel_location = $event['location_id']?>
+              <option <?php if($sel_location == NULL) echo('selected')?> 
+                    value="NULL" disabled>City - Location name : Address</option>
+              <?php foreach($locations as $location):?>
+                <option <?php if($sel_location == $location["location_id"]) echo('selected')?> 
+                    value="<?=$location["location_id"]?>">
+                      <?=$location["city_name"]?> - 
+                      <?=$location["location_name"]?> : 
+                      <?=$location["address"]?>
+                </option>
+              <?php endforeach ?>          
             </select>
           </div>
         </div>

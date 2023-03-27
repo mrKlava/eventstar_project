@@ -19,6 +19,7 @@ SELECT E.event_id
         ,E.event_date
         ,E.register_deadline
         ,E.age_rating
+        ,L.location_id
         ,L.location_name
         ,L.address
         ,C.city_name
@@ -39,3 +40,20 @@ SELECT E.event_id
     INNER JOIN VIEW_event_registration_count AS ER
     	ON ER.event_id = E.event_id
 ;
+
+
+
+CREATE VIEW VIEW_locations_list
+AS
+SELECT CL.location_id
+		,L.location_name
+        ,L.description
+        ,L.capacity
+        ,CL.city_id
+        ,C.city_name
+        ,L.address
+	FROM city_location AS CL
+	INNER JOIN cities AS C
+		ON CL.city_id = C.city_id
+	INNER JOIN locations AS L
+		on L.location_id = CL.location_id

@@ -14,15 +14,19 @@ if ($_SESSION['user_id'] != $id) {
     /* HANDLE USER INFO */
 
 // check form form required fields
-if (isset( $_POST["name"]) 
+if (
+  isset( $_POST["name"]) 
   && isset( $_POST["surname"]) 
   && isset( $_POST["email"]) 
-  && isset( $_POST["bdate"])) {
+  && isset( $_POST["bdate"])
+) {
   // check if they are not empty
-  if ( $_POST["name"] != '' 
+  if ( 
+    $_POST["name"] != '' 
     && $_POST["surname"] != '' 
     && $_POST["email"] != '' 
-    && $_POST["bdate"] != '') {
+    && $_POST["bdate"] != ''
+  ) {
 
 
     // sanitize input
