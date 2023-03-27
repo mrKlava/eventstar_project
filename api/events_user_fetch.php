@@ -1,7 +1,6 @@
 <?php
 
 /* TODO 
-- fix issue with PROCEDURE returning null on event list
 
 */
 
@@ -13,21 +12,17 @@ if ($_SESSION['user_id'] != $id) {
   header('location:not-found.php');
 }
 
-// will need to make s.procedure to get events
-$request = $db->prepare("SELECT * FROM VIEW_events_list");
+// get all event ids where user is registered
+$request = $db->prepare(" SELECT *
+FROM VIEW_events_list
+WHERE event_id IN (
+SELECT event_id 
+  FROM registrations AS R
+  WHERE R.user_id = :user_id
+)");
+
+$request->bindParam(':user_id', $_SESSION['user_id']);
+
 $request->execute();
 
 $events = $request->fetchAll(PDO::FETCH_ASSOC);
-
-
-$get_event_list = $db->prepare("CALL PR_get_user_events(USER_ID)");
-$get_event_list->bindParam(":USER_ID", $_SESSION['user_id'], PDO::PARAM_INT);
-
-$get_event_list->execute();
-
-$event_list = $get_event_list->fetchAll(PDO::FETCH_ASSOC);
-
-// while($row = $get_event_list->fetchAll(PDO::FETCH_ASSOC)) {
-//   var_dump($row);
-// }
-

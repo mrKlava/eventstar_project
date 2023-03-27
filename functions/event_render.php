@@ -22,16 +22,19 @@
           <p>Location: <?= $event["location_name"] ?></p>
         </div>
 
-        <div class="col-sm-4 d-flex justify-content-center align-items-center mb-3">
-          <?php if ($event["age_rating"] != NULL) : ?>
-            <p class="mb-3">This event has age limit: <?= $event["age_rating"] ?></p>
-          <?php endif ?>
-
-          <?php if (false) : ?>
-            <button class="btn btn-primary">Register</button>
-          <?php else : ?>
-            <p class="text-success">You are registered on this event</p>
-          <?php endif ?>
+        <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center mb-3">
+          <div class="row">
+            <?php if ($event["age_rating"] != NULL) : ?>
+              <p class="mb-3">This event has age limit: <?= $event["age_rating"] ?></p>
+            <?php endif ?>
+          </div>
+          <div class="row">
+            <?php if (in_array($event['event_id'], $_SESSION['events_going'])) : ?>
+              <button class="btn btn-danger">Un-register</button>
+            <?php else : ?>
+              <button class="btn btn-success">Register</button>
+            <?php endif ?>
+          </div>
         </div>
 
         <hr class="my-3">

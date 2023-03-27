@@ -50,6 +50,9 @@ if (isset($_POST["email"]) && isset($_POST["pwd"])) {
           $_SESSION['org_id'] = $org_id['organizator_id'];
         }
 
+        // get list of events registered on
+        require './user_events_going.php';
+
 
         // add registered event list
         // $get_event_list = $db->prepare("CALL PR_get_user_events(:user_id)");

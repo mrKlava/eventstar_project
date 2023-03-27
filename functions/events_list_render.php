@@ -24,7 +24,11 @@
               <span><?= $event['city_name'] ?></span>
             </small>
           </p>
-          <p>info</p>
+          <?php if (in_array($event['event_id'], $_SESSION['events_going'])):?>
+            <p class="text-success">You are registered</p>
+          <?php else:?>
+            <button class="btn btn-primary">Register</button>
+          <?php endif?>   
         </div>
         <div class="card-body p-5">
           <h5 class="card-title mb-3"><?= $event['event_name'] ?></h5>

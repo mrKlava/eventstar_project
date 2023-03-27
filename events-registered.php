@@ -13,10 +13,13 @@ include API . 'events_user_fetch.php';
 <head><?php $title="My Events"; include TEMPLATES . "_head.php"; ?></head>
 
 <body>
-  <?php $page_title = 'My Events'; include TEMPLATE_PARTS . '_header.php';?>
+  <?php $page_title = 'My Events'; include TEMPLATE_PARTS . '_header.php'?>
 
   <main class="container">
-    <?php var_dump($event_list)?>
+
+    <?php
+      var_dump($_SESSION['events_going']);
+    ?>
     <?php include FUNCTIONS . 'events_list_render.php'; ?>
   </main>
 </body>
