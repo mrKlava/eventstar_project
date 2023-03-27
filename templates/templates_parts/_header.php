@@ -34,7 +34,7 @@
               <a class="nav-link" href="events-registered.php?id=<?=$_SESSION['user_id']?>">My events</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="user-editor.php?id=<?=$_SESSION['user_id']?>">Profile</a>
+              <a class="nav-link" href="user-editor.php?user_id=<?=$_SESSION['user_id']?>">Profile</a>
             </li>
 
             <!-- ORGANIZATOR -->

@@ -37,7 +37,7 @@
         <td><?= $event['event_date'] ?></td>
         <td><?= $event['city_name'] ?></td>
         <td><a href="event-editor.php?event_id=<?=$event['event_id']?>">EDIT</a></td>
-        <td><a class="btn btn-danger" href="api/event_delete.php?event_id=<?=$event['event_id']?>&org_id=<?=$event['organizator_id']?>">X</a></td>
+        <td><a class="btn btn-danger py-0 px-1" href="api/event_delete.php?event_id=<?=$event['event_id']?>&org_id=<?=$event['organizator_id']?>">X</a></td>
       </tr>
     <?php endforeach ?>
   </tbody>

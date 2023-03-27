@@ -60,10 +60,3 @@ if (
     return;
   }
 }
-
-
-
-// $2y$10$BaRB2eSVjEVwWhZ1wS12C.jt1hZt.0R.cvxpHLVb4YfkC5Wx131qe
-
-
-//INSERT INTO `users` (`user_id`, `email`, `name`, `surname`, `hash`, `birth_date`) VALUES (NULL, 'test@email.com', 'test', 'test', '$2y$10$BaRB2eSVjEVwWhZ1wS12C.jt1hZt.0R.cvxpHLVb4YfkC5Wx131qe', '2023-02-17');

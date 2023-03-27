@@ -3,10 +3,10 @@ session_start();
 
 include "../db/db.php";
 
-$id = htmlspecialchars($_GET["id"]);
+$id = htmlspecialchars($_GET["user_id"]);
 
 // check if session user id matches with requested user id
-if ($_SESSION['user_id'] != $id) {
+if ($_SESSION['user_id'] != $id && !in_array(1, $_SESSION['roles'])) {
   $_SESSION['error'] = 'Incorrect user ID';
   header('location:../not-found.php');
 }
@@ -41,7 +41,7 @@ if (
 
     if ($birth_date >= $today) {
       $_SESSION["error"] = "Invalid birth date";
-      header("location:../user-editor.php?id=$id");
+      header("location:../user-editor.php?user_id=$id");
       return;
     }
 
@@ -58,7 +58,7 @@ if (
     // if email 
     if ($email_exists) {
       $_SESSION['error'] = "User with same email already exists";
-      header("location:../user-editor.php?id=$id");
+      header("location:../user-editor.php?user_id=$id");
       return;
     }
 
@@ -101,5 +101,5 @@ if (
   }
 }
 
-header("location:../user-editor.php?id=$id");
+header("location:../user-editor.php?user_id=$id");
 return;

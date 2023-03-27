@@ -12,11 +12,11 @@ include '../db/db.php';
 if (!in_array(1, $_SESSION['roles']) && !in_array(4, $_SESSION['roles'])) header('location:index.php');
 
 // handle delete by organizator
-if (isset($_GET['event_id']) && isset($_GET['org_id'])) {
-  if ($_GET['org_id'] === $_SESSION['org_id']) {
-    $delete_as_org = $db->prepare("DELETE FROM events WHERE event_id = :event_id AND organizator_id = :org_id");
+if ((isset($_GET['event_id']) && isset($_GET['org_id'])) || in_array(1, $_SESSION['roles'])) {
+  if ($_GET['org_id'] === $_SESSION['org_id'] || in_array(1, $_SESSION['roles'])) {
+    $delete_as_org = $db->prepare("DELETE FROM events WHERE event_id = :event_id");
     $delete_as_org->bindParam(':event_id', $_GET['event_id']);
-    $delete_as_org->bindParam(':org_id', $_SESSION['org_id']);
+    // $delete_as_org->bindParam(':org_id', $_SESSION['org_id']);
     
     $delete_as_org->execute();
 
@@ -30,4 +30,5 @@ if (isset($_GET['event_id']) && isset($_GET['org_id'])) {
 }
 
 
-header('location:../events-manager.php?id=' . $_SESSION['user_id']);
+// header('location:../events-manager.php?id=' . $_SESSION['user_id']);
+header("location:" . $_SERVER['HTTP_REFERER']);

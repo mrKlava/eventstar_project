@@ -24,7 +24,7 @@ include API . 'user_fetch.php';
   include TEMPLATE_PARTS . '_header.php'; 
   ?>
   <main class="container mt-5">
-    <form class="row mb-3 border rounded-3 px-3 py-5" action="./api/user_update.php?id=<?=$_SESSION['user_id']?>" method="post">
+    <form class="row mb-3 border rounded-3 px-3 py-5" action="./api/user_update.php?user_id=<?=$_GET['user_id']?>" method="post">
       <div class="row">
         <div class="col-sm mb-3">
           <label for="name" class="form-label">Name*</label>
