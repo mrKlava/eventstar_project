@@ -37,7 +37,7 @@ SELECT E.event_id
     	ON E.organizator_id = O.organizator_id
     INNER JOIN users AS U
     	ON O.user_id = U.user_id
-    INNER JOIN VIEW_event_registration_count AS ER
+    LEFT JOIN VIEW_event_registration_count AS ER
     	ON ER.event_id = E.event_id
 ;
 
