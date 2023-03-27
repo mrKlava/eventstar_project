@@ -30,9 +30,9 @@
           </div>
           <div class="row">
             <?php if (in_array($event['event_id'], $_SESSION['events_going'])) : ?>
-              <button class="btn btn-danger">Un-register</button>
+              <a class="btn btn-danger" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Un-register</a>
             <?php else : ?>
-              <button class="btn btn-success">Register</button>
+              <a class="btn btn-success" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
             <?php endif ?>
           </div>
         </div>

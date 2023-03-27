@@ -27,7 +27,7 @@
           <?php if (in_array($event['event_id'], $_SESSION['events_going'])):?>
             <p class="text-success">You are registered</p>
           <?php else:?>
-            <button class="btn btn-primary">Register</button>
+            <a class="btn btn-primary" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
           <?php endif?>   
         </div>
         <div class="card-body p-5">

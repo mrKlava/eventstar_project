@@ -11,7 +11,7 @@ $get_event_ids->execute();
 
 $events_going = $get_event_ids->fetchAll(PDO::FETCH_ASSOC);
 
-// put all id to session
+// put all ids to session
 unset($_SESSION['events_going']);
 foreach($events_going as $key => $event_id) {
   $_SESSION['events_going'][] = $event_id['event_id'];

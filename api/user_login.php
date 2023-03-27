@@ -1,8 +1,9 @@
 <?php
-include '../db/db.php';
-
 // init session
 session_start();
+
+include '../db/db.php';
+
 
 // check table for keys
 if (isset($_POST["email"]) && isset($_POST["pwd"])) {
