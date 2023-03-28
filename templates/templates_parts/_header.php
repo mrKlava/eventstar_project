@@ -61,6 +61,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="events-table.php">Events List</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="location-manager.php">Manage Locations</a>
+              </li>
             <?php endif ?>
             </ul>
 

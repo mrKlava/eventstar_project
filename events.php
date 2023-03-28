@@ -20,7 +20,7 @@ include API . "events_fetch.php";
   <?php $page_title = 'Events';
   include TEMPLATE_PARTS . '_header.php'; ?>
 
-  <main class="p-5">
+  <main class="container">
     <section class="filter mb-4">
 
       <form class="row">

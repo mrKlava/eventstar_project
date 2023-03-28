@@ -31,7 +31,7 @@
                 2 => '6+',
                 3 => '12+',
                 4 => '16+',
-                4 => '18+'
+                5 => '18+'
               ]
               ?>
               <p class="mb-3">This event has rating: <?= $ratings[$event["age_rating"]] ?></p>
