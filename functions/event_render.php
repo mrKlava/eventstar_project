@@ -25,7 +25,16 @@
         <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center mb-3">
           <div class="row">
             <?php if ($event["age_rating"] != NULL) : ?>
-              <p class="mb-3">This event has age limit: <?= $event["age_rating"] ?></p>
+              <?php
+              $ratings = [
+                1 => 'For kids',
+                2 => '6+',
+                3 => '12+',
+                4 => '16+',
+                4 => '18+'
+              ]
+              ?>
+              <p class="mb-3">This event has rating: <?= $ratings[$event["age_rating"]] ?></p>
             <?php endif ?>
           </div>
           <div class="row">

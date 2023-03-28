@@ -4,13 +4,13 @@
 - pagination
  -->
 
-<table class="table table-striped table-hover table-sm">
+<table class="boot-table table table-striped table-hover table-sm">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Surname</th>
+      <th data-sortable="true" data-field="id">ID</th>
+      <th data-sortable="true" data-field="email">Email</th>
+      <th data-sortable="true" data-field="name">Name</th>
+      <th data-sortable="true" data-field="surname">Surname</th>
       <th>EDIT</th>
       <th>Delete</th>
     </tr>
