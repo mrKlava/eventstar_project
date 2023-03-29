@@ -100,6 +100,7 @@ include API . './locations_fetch.php';
               <option <?php if($sel_age == 5) echo('selected')?> value="5">18+</option>
             </select>
           </div>
+
           <div class="col-sm-4 mb-4">
             <label for="person_max" class="form-label">Places*</label>
             <input type="text" class="form-control" name="person_max" value="<?= $event["person_max"] ?>" required>
@@ -119,10 +120,11 @@ include API . './locations_fetch.php';
             <textarea class="form-control" name="description" style="height: 150px" required><?= $event["description"] ?></textarea>
           </div>
         </div>
+
         <div class="row mb-4">
           <div class="col">
             <label for="details" class="form-label">Details*</label>
-            <textarea class="form-control" name="details" style="height: 350px" required><?= $event["description"] ?></textarea>
+            <textarea class="form-control" name="details" style="height: 350px" required><?= $event["details"] ?></textarea>
           </div>
         </div>
 
@@ -144,6 +146,8 @@ include API . './locations_fetch.php';
             </select>
           </div>
         </div>
+
+        
 
         <div class="row">
           <div class="col">

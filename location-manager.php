@@ -39,7 +39,7 @@ include API . 'locations_fetch.php';
 
   <main class="container-fluid">
     <section>
-      <a class="btn btn-primary" href="./api/location_create.php?location_id=new">Create New location</a>
+      <a class="btn btn-primary" href="location-editor.php?location_id=new">Create New location</a>
     </section>
     <?php include FUNCTIONS . 'locations_table_render.php' ?>
   </main>
