@@ -15,6 +15,7 @@ if (!in_array(1, $_SESSION['roles']) && !in_array(4, $_SESSION['roles'])) header
 // check if all required fields are field
 if (
   isset($_GET["event_id"])
+  && isset($_GET["organizator_id"])
   && isset($_POST["event_name"])
   && isset($_POST["date"])
   && isset($_POST["hour"])
@@ -27,16 +28,17 @@ if (
 ) {
   // required are not empty
   if (
-    $_GET["event_id"]         != ''
-    && $_POST["event_name"]   != ''
-    && $_POST["date"]         != ''
-    && $_POST["hour"]         != ''
-    && $_POST["min"]          != ''
-    && $_POST["person_max"]   != ''
-    && $_POST["age_rating"]   != ''
-    && $_POST["description"]  != ''
-    && $_POST["details"]      != ''
-    && $_POST["location_id"]  != ''
+    $_GET["event_id"]           != ''
+    && $_GET["organizator_id"]  != ''
+    && $_POST["event_name"]     != ''
+    && $_POST["date"]           != ''
+    && $_POST["hour"]           != ''
+    && $_POST["min"]            != ''
+    && $_POST["person_max"]     != ''
+    && $_POST["age_rating"]     != ''
+    && $_POST["description"]    != ''
+    && $_POST["details"]        != ''
+    && $_POST["location_id"]    != ''
   ) {
 
 
@@ -45,6 +47,7 @@ if (
     // required 
     $user_id = $_SESSION["user_id"];
     $event_id = htmlspecialchars($_GET['event_id']);
+    $organizator_id = htmlspecialchars($_GET['organizator_id']);
     $event_name = htmlspecialchars($_POST['event_name']);
     $description = htmlspecialchars($_POST['description']);
     $details = htmlspecialchars($_POST['details']);
@@ -68,6 +71,8 @@ if (
     $image = htmlspecialchars($_POST['image']);
 
 
+
+
     // check if event is not new
     // handle updating of event
     if ($event_id != "new") {
@@ -83,16 +88,16 @@ if (
       WHERE event_id = :event_id AND organizator_id = :organizator_id");
 
 
-      $update->bindParam('event_name',          $event_name);
-      $update->bindParam('details'    ,         $details);
-      $update->bindParam('description',         $description);
-      $update->bindParam('event_date',          $event_date);
-      $update->bindParam('register_deadline',   $register_deadline);
-      $update->bindParam('person_max',          $person_max);
-      $update->bindParam('age_rating',          $age_rating);
-      $update->bindParam('location_id',         $location_id);
-      $update->bindParam('event_id',            $event_id);
-      $update->bindParam('organizator_id',      $_SESSION['org_id']);
+      $update->bindParam(':event_name',          $event_name);
+      $update->bindParam(':details'    ,         $details);
+      $update->bindParam(':description',         $description);
+      $update->bindParam(':event_date',          $event_date);
+      $update->bindParam(':register_deadline',   $register_deadline);
+      $update->bindParam(':person_max',          $person_max);
+      $update->bindParam(':age_rating',          $age_rating);
+      $update->bindParam(':location_id',         $location_id);
+      $update->bindParam(':event_id',            $event_id);
+      $update->bindParam(':organizator_id',      $organizator_id);
 
       $update->execute();
 

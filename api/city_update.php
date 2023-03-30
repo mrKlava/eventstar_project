@@ -6,38 +6,41 @@ include '../db/db.php';
 if (!in_array(1, $_SESSION['roles'])) header('location:index.php');
 
 // check if city name is set and not empty
-if (isset($_POST['city_name']) && $_POST["city_name"] != '') {
-  
+if (isset($_POST['city_id']) && $_POST["city_id"] != '' && $_POST["city_name"] != '') {
+
   // prepare input
+  $city_id = htmlspecialchars($_POST['city_id']);
   $city_name = htmlspecialchars($_POST['city_name']);
-  $city_new = htmlspecialchars($_POST['city_new']);
-  
 
-  $check_exist = $db->prepare("SELECT * FROM cities WHERE city_name = ? OR city_name = ? LIMIT 1");
-  $check_exist->execute([$city_name, $city_new]);
 
-  $exists->fetch(PDO::FETCH_ASSOC);
+  // check if city name is already existing
+  $check_exist = $db->prepare("SELECT * FROM cities WHERE city_name = ? LIMIT 1");
+  $check_exist->execute([$city_name]);
 
+  $exists = $check_exist->fetch(PDO::FETCH_ASSOC);
+
+  var_dump($exists);
+  var_dump(empty($exists));
 
   // prepare query
-  if ($_POST["city_name"] == "NULL") {
-    $query = "INSERT INTO cities (city_name) VALUES (?)";
-    $p = [$city_name];
+  if ($_POST["city_id"] == NULL && empty($exists)) {
+    $insert_city = $db->prepare("INSERT INTO cities (city_name) VALUES(?)");
+    $insert_city->execute([$city_name]);
+
+    $insert_city->fetch(PDO::FETCH_ASSOC);
+
+  } else if (empty($exists)) {
+    $update_city = $db->prepare("UPDATE cities SET city_name = ? WHERE city_id = ?");
+    $update_city->execute([$city_name, $city_id]);
+
+    $update_city->fetch(PDO::FETCH_ASSOC);
+
   } else {
-    $q = "UPDATE TABLE cities SET city_name = ? WHERE city_name = ?";
-    $p = [$city_name, $city_name];
+    $_SESSION['error'] = 'This city is already in the list';
   }
 
-  $handle_city = $db->prepare($q);
-  $handle_city->execute($p);
+} else {
+  $_SESSION['error'] = 'New city name is missing';
 
-  $status = $handle_city->fetch(PDO::FETCH_ASSOC);
-
-  var_dump($handle_city);
-  var_dump($status);
-
-  // if(!$status) {
-  //   $_SESSION['error'] = $err;
-  //   header("location:" . $_SERVER['HTTP_REFERER']);
-  // }
 }
+header("location:" . $_SERVER['HTTP_REFERER']);

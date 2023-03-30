@@ -64,6 +64,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="location-manager.php">Manage Locations</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="city-manager.php">Manage Cities</a>
+              </li>
             <?php endif ?>
             </ul>
 

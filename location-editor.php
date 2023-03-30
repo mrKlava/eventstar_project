@@ -50,30 +50,6 @@ if ($_GET['location_id'] != 'new') {
         ?>
       </p>
 
-      <form action="./api/city_update.php" method="POST" class="row mb-5 border rounded-3 px-3 py-5">
-        <h4 class="mb-5">City editor</h1>
-          <div class="row mb-3">
-            <div class="col-sm-6 mb-4">
-              <label for="city_name" class="form-label">Name*</label>
-              <select class="form-select" name="city_name" aria-label="Select city" required>
-                <option value="NULL" selected>Add new city -></option>
-                <?php foreach ($cities as $city) : ?>
-                  <option value="<?= $city["city_name"] ?>">
-                    <?= $city["city_name"] ?>
-                  </option>
-                <?php endforeach ?>
-              </select>
-            </div>
-            <div class="col-sm-6 mb-4">
-              <label for="city_new" class="form-label">New name</label>
-              <input type="text" class="form-control" name="city_new">
-            </div>
-          </div>
-          <div class="col">
-            <button class="btn btn-primary">Save</button>
-          </div>
-      </form>
-
       <form action="./api/location_update.php?location_id=<?= $_GET["location_id"] ?>" method="POST" class="row mb-3 border rounded-3 px-3 py-5">
         <h4 class="mb-5">Location Editor</h4>
         <div class="row mb-3">

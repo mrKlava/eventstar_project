@@ -26,10 +26,12 @@ if ($event_id != "new") {
     header('location:not-found.php');
     $_SESSION["error"] = "Event do not exist";
     return;
-  } else if ($event["organizator_id"] != $_SESSION["org_id"]) {
-    header('location:not-found.php');
-    $_SESSION["error"] = "You are not organizator of this event";
-    return;
+  } else if(!in_array(1, $_SESSION['roles'])) {
+    if ($event["organizator_id"] != $_SESSION["org_id"]) {
+      $_SESSION["error"] = "You are not organizator of this event";
+      header('location:not-found.php');
+      return;
+    }
   }
 
   // prepare data for new event

@@ -57,3 +57,19 @@ SELECT CL.location_id
 		ON CL.city_id = C.city_id
 	INNER JOIN locations AS L
 		on L.location_id = CL.location_id
+;
+
+
+
+CREATE VIEW VIEW_event_registrations
+AS
+SELECT R.event_id
+		,U.user_id
+        ,U.name
+        ,U.surname
+        ,U.email
+		,R.registration_date
+	FROM registrations AS R
+    INNER JOIN users AS U
+    	ON R.user_id = U.user_id
+;
