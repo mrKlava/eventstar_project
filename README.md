@@ -1,13 +1,10 @@
 # PROJECT "EventStar"
 
-## TODO
+# Branch -routing
+## implement router
 
-- user functionality:
-  - become organizator
-
-- admin functionality:
-  - create location
-
+## TODO 
+  - 
 ### DB
   - 
 
