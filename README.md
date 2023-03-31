@@ -4,7 +4,7 @@
 ## implement router
 
 ## TODO 
-  - 
+  - remove GET payload where it is possible and use SESSION
 ### DB
   - 
 
@@ -13,5 +13,4 @@
 
 ### PAGES
   - 
-
 

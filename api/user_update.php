@@ -8,7 +8,7 @@ $id = htmlspecialchars($_GET["user_id"]);
 // check if session user id matches with requested user id
 if ($_SESSION['user_id'] != $id && !in_array(1, $_SESSION['roles'])) {
   $_SESSION['error'] = 'Incorrect user ID';
-  header('location:../not-found.php');
+  header('location:../index.php?page=not-found');
 }
 
     /* HANDLE USER INFO */

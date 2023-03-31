@@ -4,10 +4,10 @@
 
 */
 
-$id = $_GET["id"];
+$user_id = $_GET["user_id"];
 
 // check if session user id matches with requested user id
-if ($_SESSION['user_id'] != $id) {
+if ($_SESSION['user_id'] != $user_id) {
   $_SESSION['error'] = 'Wrong user ID';
   header('location:not-found.php');
 }

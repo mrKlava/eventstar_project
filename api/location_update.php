@@ -119,4 +119,5 @@ if (
   $_SESSION['error'] = 'Fatal error';
 }
 
-header("location:../location-editor.php?location_id=" . $location_id);
+header("location:../index.php?page=location-editor&location_id=" . $location_id);
+

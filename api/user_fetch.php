@@ -5,7 +5,8 @@ $user_id = htmlspecialchars($_GET["user_id"]);
 // check if session user id matches with requested user id
 if ($_SESSION['user_id'] != $user_id && !in_array(1, $_SESSION['roles'])) {
   $_SESSION['error'] = 'Wrong user ID';
-  header('location:not-found.php');
+  header('location:index.php?page=login');
+  return;
 }
 
 $request = $db->prepare("SELECT * FROM users WHERE user_id = ?");

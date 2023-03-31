@@ -30,16 +30,17 @@
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
             <?php if (isset($_SESSION['user_id'])) : ?>
+
               <!-- USER -->
 
               <li class="nav-item">
                 <a class="nav-link" href="index.php?page=events">Events</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?page=events-registered.php?id=<?= $_SESSION['user_id'] ?>">My events</a>
+                <a class="nav-link" href="index.php?page=events-going&user_id=<?= $_SESSION['user_id'] ?>">My events</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?page=user-editor.php?user_id=<?= $_SESSION['user_id'] ?>">Profile</a>
+                <a class="nav-link" href="index.php?page=user-editor&user_id=<?= $_SESSION['user_id'] ?>">Profile</a>
               </li>
 
               <!-- ORGANIZATOR -->
@@ -48,10 +49,10 @@
                 <hr>
                 <h6 class="mb-3"> Organizator menu </h6>
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=events-manager.php?id=<?= $_SESSION["user_id"] ?>">Manage events</a>
+                  <a class="nav-link" href="index.php?page=events-manager&user_id=<?= $_SESSION["user_id"] ?>">Manage events</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=event-editor.php?event_id=new">Create Event</a>
+                  <a class="nav-link" href="index.php?page=event-editor&event_id=new">Create Event</a>
                 </li>
               <?php endif ?>
 
@@ -61,16 +62,16 @@
                 <hr>
                 <h6 class="mv-3"> Admin menu </h6>
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=user-table.php">User List</a>
+                  <a class="nav-link" href="index.php?page=users-manager">User</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=events-table.php">Events List</a>
+                  <a class="nav-link" href="index.php?page=events-manager">Events</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=location-manager.php">Manage Locations</a>
+                  <a class="nav-link" href="index.php?page=locations-manager">Locations</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=city-manager.php">Manage Cities</a>
+                  <a class="nav-link" href="index.php?page=city-manager">Cities</a>
                 </li>
               <?php endif ?>
 
@@ -84,7 +85,7 @@
 
         <?php endif ?>
 
-
+      
         </div>
 
         <!-- HANDLE LOGIN/REGISTER/LOGOUT -->

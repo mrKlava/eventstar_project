@@ -39,12 +39,12 @@
       <tr>
         <td><?= $event['event_id'] ?></td>
         <td>
-          <a class="card-link" href="event-details.php?event_id=<?= $event['event_id'] ?>">
+          <a class="card-link" href="index.php?page=event-details&event_id=<?= $event['event_id'] ?>">
             <?= $event['event_name'] ?>
           </a>
         </td>
         <td>
-          <a href="event-registrations.php?event_id=<?= $event['event_id'] ?>">
+          <a href="index.php?page=event-registrations&event_id=<?= $event['event_id'] ?>">
             <?php $event['registrations'] = $event['registrations'] == NULL ? 0 : $event['registrations'] ?>
             <?= $event['registrations'] ?>
             /
@@ -53,7 +53,7 @@
         </td>
         <td><?= $event['event_date'] ?></td>
         <td><?= $event['city_name'] ?></td>
-        <td><a class="btn btn-primary py-0 px-1" href="event-editor.php?event_id=<?= $event['event_id'] ?>">E</a></td>
+        <td><a class="btn btn-primary py-0 px-1" href="index.php?page=event-editor&event_id=<?= $event['event_id'] ?>">E</a></td>
         <td><a class="btn btn-danger py-0 px-1" href="api/event_delete.php?event_id=<?= $event['event_id'] ?>&org_id=<?= $event['organizator_id'] ?>">X</a></td>
       </tr>
     <?php endforeach ?>
