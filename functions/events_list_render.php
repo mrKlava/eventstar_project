@@ -1,15 +1,13 @@
-<!-- TODO
-- check user is registered for event
--->
+<?php foreach ($events as $event) : 
 
-<?php foreach ($events as $event) : ?>
-  <?php 
+    // handle date format
     $date_obj = date_create($event["event_date"]);
 
     $event["date"] = $date_obj->format('d/m/Y');
     $event["hour"] = $date_obj->format('H');
     $event["min"] =  $date_obj->format('i');  
   ?>
+
   <article class="card mb-5">
     <div class="row g-0">
       <div class="col-md-4">
@@ -24,18 +22,24 @@
               <span><?= $event['city_name'] ?></span>
             </small>
           </p>
-          <?php if (in_array($event['event_id'], $_SESSION['events_going'])):?>
-            <p class="text-success">You are registered</p>
-          <?php else:?>
-            <a class="btn btn-primary" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
-          <?php endif?>   
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <?php if (in_array($event['event_id'], $_SESSION['events_going'])):?>
+              <p class="text-success">You are registered</p>
+            <?php else:?>
+              <a class="btn btn-primary" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
+            <?php endif?>  
+          <?php else: ?>
+            <!-- show some info for not logged users -->
+          <?php endif ?>
+
         </div>
         <div class="card-body p-5">
           <h5 class="card-title mb-3"><?= $event['event_name'] ?></h5>
           <p class="card-text mb-3"><?= $event['details'] ?></p>
-          <a class="card-link" href="event-details.php?event_id=<?= $event['event_id'] ?>">More details</a>
+          <a class="card-link" href="index.php?page=event-details&event_id=<?= $event['event_id'] ?>">More details</a>
         </div>
       </div>
     </div>
   </article>
+  
 <?php endforeach ?>

@@ -4,6 +4,8 @@
 
 define('TEMPLATES', './templates/');
 define('TEMPLATE_PARTS', './templates/templates_parts/');
+define('PAGES', './templates/pages/');
+
 define('ASSETS', './assets/');
 define('IMAGES', './assets/images/');
 define('CSS', './assets/css/');

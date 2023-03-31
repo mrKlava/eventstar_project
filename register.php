@@ -1,6 +1,5 @@
 <?php
-session_start();
-if (isset($_SESSION['user_id'])) header('location:index.php');
+
 
 include './config/config.php';
 include DB;
