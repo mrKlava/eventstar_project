@@ -1,4 +1,4 @@
-<?php if (isset($_SESSION['user_id'])) header('location:index.php')?>
+<?php if (is_user()) header('location:index.php')?>
 
 <main class="container vh-100 d-flex flex-column justify-content-center align-items-center remove-header">
   <h1 class="title mb-5 text-center">Login</h1>

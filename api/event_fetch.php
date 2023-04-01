@@ -1,10 +1,15 @@
 <?php
+
+if(!isset($_GET['event_id'])) header('location:index.php?page=not-found');
+
 $id = $_GET["event_id"];
 
-$request = $db->prepare("SELECT * FROM VIEW_events_list WHERE event_id = ?");
-$request->execute([$id]);
+$get_event = $db->prepare("SELECT * FROM VIEW_events_list WHERE event_id = ?");
+$get_event->execute([$id]);
 
-$event = $request->fetch(PDO::FETCH_ASSOC);
+$event = $get_event->fetch(PDO::FETCH_ASSOC);
+
+if(empty($event)) header('location:index.php?page=not-found');
 
 $date_obj = date_create($event["event_date"]);
 

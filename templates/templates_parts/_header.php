@@ -26,7 +26,6 @@
 
         <div class="offcanvas-body">
 
-
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
             <?php if (isset($_SESSION['user_id'])) : ?>
@@ -37,10 +36,10 @@
                 <a class="nav-link" href="index.php?page=events">Events</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?page=events-going&user_id=<?= $_SESSION['user_id'] ?>">My events</a>
+                <a class="nav-link" href="index.php?page=events-going">My events</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?page=user-editor&user_id=<?= $_SESSION['user_id'] ?>">Profile</a>
+                <a class="nav-link" href="index.php?page=user-editor">Profile</a>
               </li>
 
               <!-- ORGANIZATOR -->
@@ -49,7 +48,7 @@
                 <hr>
                 <h6 class="mb-3"> Organizator menu </h6>
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=events-manager&user_id=<?= $_SESSION["user_id"] ?>">Manage events</a>
+                  <a class="nav-link" href="index.php?page=events-manager">Manage events</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="index.php?page=event-editor&event_id=new">Create Event</a>
@@ -65,7 +64,7 @@
                   <a class="nav-link" href="index.php?page=users-manager">User</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=events-manager">Events</a>
+                  <a class="nav-link" href="index.php?page=events-manager&events=all">Events</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="index.php?page=locations-manager">Locations</a>
@@ -85,7 +84,6 @@
 
         <?php endif ?>
 
-      
         </div>
 
         <!-- HANDLE LOGIN/REGISTER/LOGOUT -->

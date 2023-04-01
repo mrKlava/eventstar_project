@@ -1,8 +1,9 @@
 <?php
-if (!isset($_SESSION['user_id'])) header('index.php?page=login');
+is_logged();
 
-include API . './locations_fetch.php';
-include API . './cities_fetch.php';
+if (!is_admin()) header('location:index.php?page=not-found');
+
+if (!isset($_GET['location_id'])) header('location:index.php?page=not-found');
 
 if ($_GET['location_id'] != 'new') {
   include API . './location_fetch.php';
@@ -15,6 +16,9 @@ if ($_GET['location_id'] != 'new') {
     'description' => ''
   ];
 }
+
+include API . './locations_fetch.php';
+include API . './cities_fetch.php';
 ?>
 
 <main class="my-5">

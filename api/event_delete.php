@@ -2,6 +2,8 @@
 session_start();
 
 include '../db/db.php';
+include '../functions/roles.php';
+
 
 /*  TODO
 -- validate inputs from form
@@ -9,11 +11,11 @@ include '../db/db.php';
 */
 
 // check if if user is admin or organizator
-if (!in_array(1, $_SESSION['roles']) && !in_array(4, $_SESSION['roles'])) header('location:index.php');
+if (!is_admin() && !is_organizator()) header('location:index.php?page=not-found');
 
 // handle delete by organizator
-if ((isset($_GET['event_id']) && isset($_GET['org_id'])) || in_array(1, $_SESSION['roles'])) {
-  if ($_GET['org_id'] === $_SESSION['org_id'] || in_array(1, $_SESSION['roles'])) {
+if ((isset($_GET['event_id']) && isset($_GET['org_id'])) || is_admin()) {
+  if ($_GET['org_id'] === $_SESSION['org_id'] || is_admin()) {
     $delete_as_org = $db->prepare("DELETE FROM events WHERE event_id = :event_id");
     $delete_as_org->bindParam(':event_id', $_GET['event_id']);
     // $delete_as_org->bindParam(':org_id', $_SESSION['org_id']);

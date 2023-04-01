@@ -1,29 +1,26 @@
 <?php
+require_once './functions/roles.php';
 
-$user_id = $_GET["user_id"];
+is_logged();
 
-// check if session user id matches with requested user id and has role of organiztor
-if ($_SESSION['user_id'] != $user_id) {
-  $_SESSION['error'] = 'Wrong user ID';
-  header('location:not-found.php');
+/* Handle for admin */
+
+if (is_admin()) {
+  if (isset($_GET['events']) && $_GET['events'] === 'all') {
+    $request = $db->prepare("SELECT * FROM VIEW_events_list");
+    $request->execute();
+    
+    $events = $request->fetchAll(PDO::FETCH_ASSOC);
+    return;
+  }
 }
 
 /* Handle for orgonizator */
 
-if (in_array(4, $_SESSION["roles"])) {
+if (is_organizator()) {
   $request = $db->prepare("SELECT * FROM VIEW_events_list WHERE organizator_id = :org_id ORDER BY event_id");
   $request->bindParam(':org_id', $_SESSION['org_id']);
   $request->execute();
   
   $events = $request->fetchAll(PDO::FETCH_ASSOC);
 }
-
-// will need to make s.procedure to get events which are organized by current user
-
-
-/* Handle for administrator */
-
-// if (in_array(1, $_SESSION["roles"]))
-// $events = $request->fetchAll(PDO::FETCH_ASSOC);
-
-

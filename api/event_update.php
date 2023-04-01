@@ -2,6 +2,7 @@
 session_start();
 
 include '../db/db.php';
+include '../functions/roles.php';
 
 /*  TODO
 -- validate inputs from form
@@ -9,7 +10,7 @@ include '../db/db.php';
 */
 
 // check if if user is admin or organizator
-if (!in_array(1, $_SESSION['roles']) && !in_array(4, $_SESSION['roles'])) header('location:index.php');
+if (!is_admin() && !is_organizator()) header('location:index.php');
 
 
 // check if all required fields are field
@@ -161,5 +162,5 @@ if (
   $_SESSION['error'] = 'Fatal error';
 }
 
-header("location:../event-editor.php?event_id=" . $_GET['event_id']);
+header("location:../index.php?page=event-editor&event_id=" . $_GET['event_id']);
 

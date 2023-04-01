@@ -1,16 +1,28 @@
 <?php 
+require_once './functions/roles.php';
 
-$user_id = htmlspecialchars($_GET["user_id"]);
+is_logged();
 
-// check if session user id matches with requested user id
-if ($_SESSION['user_id'] != $user_id && !in_array(1, $_SESSION['roles'])) {
-  $_SESSION['error'] = 'Wrong user ID';
-  header('location:index.php?page=login');
-  return;
+/* handle admin */
+
+if (is_admin()) {
+  if (isset($_GET['user_id'])) {
+    $get_user = $db->prepare("SELECT * FROM users WHERE user_id = ?");
+    $get_user->execute([$_GET['user_id']]);
+  
+    $user = $get_user->fetch(PDO::FETCH_ASSOC);
+
+    if (empty($user)) header('location:index.php?page=not-found');
+
+    return;
+  }
 }
 
-$request = $db->prepare("SELECT * FROM users WHERE user_id = ?");
-$request->execute([$user_id]);
+/* handle user */
 
+if (is_user()) {
+  $get_user = $db->prepare("SELECT * FROM users WHERE user_id = ?");
+  $get_user->execute([$_SESSION['user_id']]);
 
-$user = $request->fetch(PDO::FETCH_ASSOC);
+  $user = $get_user->fetch(PDO::FETCH_ASSOC);
+}

@@ -1,4 +1,6 @@
-<?php if (!in_array(1, $_SESSION['roles'])) header('location:index.php');
+<?php 
+
+if (!is_admin()) header('location:index.php');
 
 $get_cities = $db->prepare("SELECT * FROM cities ORDER BY city_name ASC");
 

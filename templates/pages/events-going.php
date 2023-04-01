@@ -1,8 +1,8 @@
-<?php if (!isset($_SESSION['user_id'])) header('location:login.php') ?>
+<?php is_logged()?>
 
 <main class="container">
   <?php
-  include API . 'events_user_fetch.php';
+  include API . 'events_going_fetch.php';
 
   var_dump($_SESSION['events_going']);
   

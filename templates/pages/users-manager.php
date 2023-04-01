@@ -1,5 +1,7 @@
 <?php
-if (!isset($_SESSION['user_id'])) header('location:login');
+is_logged();
+
+if (!is_admin()) header('location:index.php?page=not-found');
 
 include API . 'users_fetch.php';
 ?>
@@ -23,7 +25,7 @@ include API . 'users_fetch.php';
           <td><?= $user['email'] ?></td>
           <td><?= $user['name'] ?></td>
           <td><?= $user['surname'] ?></td>
-          <td><a class="btn btn-primary py-0 px-1" href="user-editor.php?user_id=<?= $user['user_id'] ?>">E</a></td>
+          <td><a class="btn btn-primary py-0 px-1" href="index.php?page=user-editor&user_id=<?= $user['user_id'] ?>">E</a></td>
           <td><a class="btn btn-danger py-0 px-1" href="api/user_delete.php?user_id=<?= $user['user_id'] ?>">X</a></td>
         </tr>
       <?php endforeach ?>

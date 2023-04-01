@@ -1,20 +1,11 @@
 <?php 
-if (!isset($_SESSION['user_id']) && !isset($_GET['user_id'])) {
-  if ($_SESSION['user_id'] != $user_id && !in_array(1, $_SESSION['roles']))
-  echo 'sent';
-    header('location:index.php?page=login');
-}
-
-// if (
-//   (!isset($_SESSION['user_id']) || !isset($_GET['user_id']))
-//   && ($_SESSION['user_id'] != $user_id && !in_array(1, $_SESSION['roles']))
-// ) header('location:index.php?page=login');
+is_logged();
 
 include API . 'user_fetch.php'; 
 ?>
 
 <main class="container mt-5">
-  <form class="row mb-3 border rounded-3 px-3 py-5" action="./api/user_update.php?user_id=<?= $_GET['user_id'] ?>" method="post">
+  <form class="row mb-3 border rounded-3 px-3 py-5" action="./api/user_update.php?user_id=<?= $_SESSION['user_id'] ?>" method="post">
     <div class="row">
       <div class="col-sm mb-3">
         <label for="name" class="form-label">Name*</label>

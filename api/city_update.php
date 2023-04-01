@@ -2,8 +2,9 @@
 session_start();
 
 include '../db/db.php';
+include '../functions/roles.php';
 
-if (!in_array(1, $_SESSION['roles'])) header('location:index.php');
+if (is_admin()) header('location:index.php?page=not-found');
 
 // check if city name is set and not empty
 if (isset($_POST['city_id']) && $_POST["city_id"] != '' && $_POST["city_name"] != '') {

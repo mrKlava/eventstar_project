@@ -1,5 +1,7 @@
 <?php
-if (!isset($_SESSION['user_id'])) header('location:login.php');
+is_logged();
+
+if (!is_admin()) header('location:index.php?page=not-found');
 
 include API . 'locations_fetch.php';
 ?>

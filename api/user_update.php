@@ -2,6 +2,9 @@
 session_start();
 
 include "../db/db.php";
+include "../functions/roles.php";
+
+is_logged();
 
 $id = htmlspecialchars($_GET["user_id"]);
 

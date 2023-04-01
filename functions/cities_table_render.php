@@ -1,6 +1,3 @@
-<!-- TODO 
- 
--->
 <section>
 
   <p class="text-danger mb-4 text-center">
