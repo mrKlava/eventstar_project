@@ -7,7 +7,7 @@ include API . 'cities_fetch.php';
 ?>
 
 <main class="container-fluid">
-  <section>
+  <section class="container-fluid">
 
     <p class="text-danger mb-4 text-center">
       <?php

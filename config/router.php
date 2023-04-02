@@ -22,5 +22,8 @@ $routes = [
 
 $page = isset($_GET['page']) ? $page = $_GET['page'] : 'home';
 
+$image = $page;
+
 $title = isset($routes[$page]) ? $routes[$page] : '404';
+
 $page_title = $title;

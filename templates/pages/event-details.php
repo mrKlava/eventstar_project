@@ -6,6 +6,9 @@ if (empty($event)) : ?>
 <?php else : ?>
 
   <main>
+    <div class="container my-5">
+      <h1><?=$event['event_name']?></h1>
+    </div>
 
     <section class="container my-5">
       <div class="row mb-3 border rounded-3 px-3 py-3 mx-1">
@@ -59,9 +62,9 @@ if (empty($event)) : ?>
       <p class="mb-3"><?= $event['description'] ?></p>
     </section>
 
-    <div>
-      <p class="container">Address: <?= $event["location_name"] ?> <?= $event["address"] ?> <?= $event["city_name"] ?></p>
-      <div style="height:300px; background-color: green;">MAP</div>
+    <div class="my-5">
+      <p class="d-none" id="address">Address: <?= $event["location_name"] ?> <?= $event["address"] ?> <?= $event["city_name"] ?></p>
+      <div class="my-5" id="map"></div>
     </div>
 
   </main>

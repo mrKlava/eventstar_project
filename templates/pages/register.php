@@ -1,7 +1,6 @@
 <?php if (is_user()) header('location:index.php')?>
 
-<main class="container vh-100 d-flex flex-column justify-content-center align-items-center remove-header">
-  <h1 class="title mb-5 text-center">Register</h1>
+<main class="container d-flex flex-column justify-content-center align-items-center">
   <form class="row mb-3 border rounded-3 px-3 py-5" action="./api/user_register.php" method="post">
     <div class="row">
       <div class="col-sm mb-3">

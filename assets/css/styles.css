@@ -27,7 +27,9 @@ p {
   margin: 0;
 }
 
-/* CUSTOM */
+/* ============================================================
+CUSTOM 
+============================================================ */
 
 .remove-header {
   margin-top: -3rem;
@@ -43,7 +45,10 @@ p {
   object-fit: cover;
 }
 
-/* PAGE TITLE */
+/* ============================================================
+PAGE BANNER 
+============================================================ */
+
 .page-title {
   color: #FFF;
 }
@@ -59,16 +64,29 @@ p {
   margin-top: 3.5rem;
 }
 
-.banner-events {
+.banner_not-found {
+  background-image: url(../images/banners/pexels-designecologist-2526105.jpg);
+
+}
+.banner_home {
+  background-image: url(../images/banners/pexels-wendy-wei-1190297.jpg);
+
+}
+.banner_login,
+.banner_register {
+  background-image: url(../images/banners/pexels-wendy-wei-1190297.jpg);
+  padding: 10rem 0;
+}
+.banner_events {
   background-image: url(../images/banners/pexels-teddy-yang-2263436.jpg);
 
 }
-.banner-my-events {
-  background-image: url(../images/banners/pexels-teddy-yang-2263436.jpg);
+.banner_events-going {
+  background-image: url(../images/banners/pexels-tommy-lopez-3025096.jpg);
 
 }
-.banner-edit-profile {
-  background-image: url(../images/banners/pexels-teddy-yang-2263436.jpg);
+.banner_user-editor {
+  background-image: url(../images/banners/pexels-wolfgang-2747449.jpg);
 
 }
 
@@ -94,7 +112,9 @@ p {
   opacity: 0.65;
 }
 
-/* RESPONSIVE */
+/* ============================================================
+RESPONSIVE 
+============================================================ */
 
 @media (max-width: 767.98px) { 
   .rounded-start {
