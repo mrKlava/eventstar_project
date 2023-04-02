@@ -1,10 +1,10 @@
 # PROJECT "EventStar"
 
-# Branch -routing
-## implement router
+# Branch - dev
 
 ## TODO 
-  - remove GET payload where it is possible and use SESSION
+  - add js functions
+
 ### DB
   - 
 

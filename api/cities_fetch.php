@@ -1,6 +1,8 @@
 <?php 
 
-if (!is_admin()) header('location:index.php');
+// is_logged();
+
+// if (!is_admin()) header('location:index.php');
 
 $get_cities = $db->prepare("SELECT * FROM cities ORDER BY city_name ASC");
 
