@@ -44,7 +44,7 @@
           </a>
         </td>
         <td>
-          <a href="index.php?page=event-registrations&event_id=<?= $event['event_id'] ?>">
+          <a href="index.php?page=event-participants&event_id=<?= $event['event_id'] ?>">
             <?php $event['registrations'] = $event['registrations'] == NULL ? 0 : $event['registrations'] ?>
             <?= $event['registrations'] ?>
             /

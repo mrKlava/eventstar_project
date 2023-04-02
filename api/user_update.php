@@ -6,10 +6,12 @@ include "../functions/roles.php";
 
 is_logged();
 
+if (!isset($_GET['user_id'])) header('location:index.php=not-found');
+
 $id = htmlspecialchars($_GET["user_id"]);
 
 // check if session user id matches with requested user id
-if ($_SESSION['user_id'] != $id && !in_array(1, $_SESSION['roles'])) {
+if ($_SESSION['user_id'] != $id && !is_admin()) {
   $_SESSION['error'] = 'Incorrect user ID';
   header('location:../index.php?page=not-found');
 }
@@ -44,7 +46,7 @@ if (
 
     if ($birth_date >= $today) {
       $_SESSION["error"] = "Invalid birth date";
-      header("location:../user-editor.php?user_id=$id");
+      header("location:../index.php?page=user-editor&user_id=$id");
       return;
     }
 
@@ -61,7 +63,7 @@ if (
     // if email 
     if ($email_exists) {
       $_SESSION['error'] = "User with same email already exists";
-      header("location:../user-editor.php?user_id=$id");
+      header("location:../index.php?page=user-editor&user_id=$id");
       return;
     }
 
@@ -104,5 +106,5 @@ if (
   }
 }
 
-header("location:../user-editor.php?user_id=$id");
+header("location:../index.php?page=user-editor&user_id=$id");
 return;

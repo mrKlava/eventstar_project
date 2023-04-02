@@ -27,7 +27,7 @@ p {
   margin: 0;
 }
 
-/* Custom */
+/* CUSTOM */
 
 .remove-header {
   margin-top: -3rem;
@@ -43,13 +43,62 @@ p {
   object-fit: cover;
 }
 
+/* PAGE TITLE */
+.page-title {
+  color: #FFF;
+}
+
+.banner { 
+  position: relative;
+  background-attachment: fixed;
+  background-image: url(../images/banners/pexels-wendy-wei-1190297.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 16.875rem 0;
+  margin-top: 3.5rem;
+}
+
+.banner-events {
+  background-image: url(../images/banners/pexels-teddy-yang-2263436.jpg);
+
+}
+.banner-my-events {
+  background-image: url(../images/banners/pexels-teddy-yang-2263436.jpg);
+
+}
+.banner-edit-profile {
+  background-image: url(../images/banners/pexels-teddy-yang-2263436.jpg);
+
+}
+
+.banner-inner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.banner-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #191919;
+  opacity: 0.65;
+}
+
+/* RESPONSIVE */
+
 @media (max-width: 767.98px) { 
   .rounded-start {
     border-bottom-left-radius: 0!important;
     border-top-right-radius: var(--bs-border-radius)!important;
   }
-}
-
-.title-page {
-  margin-top: 5rem;
 }
