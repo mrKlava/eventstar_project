@@ -19,7 +19,7 @@
             <small class="text-muted">
               <span><?= $event['date'] ?></span> <span><?= $event['hour'] ?>:<?= $event['min'] ?></span>
               in
-              <span><?= $event['city_name'] ?></span>
+              <span class="city-name"><?= $event['city_name'] ?></span>
             </small>
           </p>
           <?php if (isset($_SESSION['user_id'])) : ?>
@@ -34,7 +34,7 @@
 
         </div>
         <div class="card-body p-5">
-          <h5 class="card-title mb-3"><?= $event['event_name'] ?></h5>
+          <h5 class="card-title mb-3 event-name"><?= $event['event_name'] ?></h5>
           <p class="card-text mb-3"><?= $event['details'] ?></p>
           <a class="card-link" href="index.php?page=event-details&event_id=<?= $event['event_id'] ?>">More details</a>
         </div>
