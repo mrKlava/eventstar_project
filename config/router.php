@@ -22,7 +22,7 @@ $routes = [
 
 $page = isset($_GET['page']) ? $page = $_GET['page'] : 'home';
 
-$image = $page;
+$banner = "banner_$page";
 
 $title = isset($routes[$page]) ? $routes[$page] : '404';
 

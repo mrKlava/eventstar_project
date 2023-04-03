@@ -15,7 +15,9 @@
 <!-- Events Lists -->
 
 <?php if ($page === 'events-going' || $page === 'events') : ?>
-  <script defer src=<?= JS . 'events-list.js' ?>></script>
+  <link rel="stylesheet" href=<?= CSS . 'events.css' ?> />
+
+  <script defer src=<?= JS . 'events.js' ?>></script>
 <?php endif ?>
 
 <!-- Event details -->

@@ -1,0 +1,29 @@
+/* btn up*/
+#btnUp {
+  position: fixed;
+
+  bottom: .425rem;
+  right: .425rem;
+
+  margin: 3rem;
+  cursor: pointer;
+  
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: none;
+
+  transition: color linear .2s,
+              background-color linear .2s;
+}
+#btnUp>svg {
+  width: 1rem;
+}
+
+#btnUp:hover {
+  background-color: #000;
+}
+
+#btnUp:hover>svg {
+  fill: #fff;
+}

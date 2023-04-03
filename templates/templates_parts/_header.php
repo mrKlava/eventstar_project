@@ -1,6 +1,6 @@
 <header class="header">
 
-  <div class="banner mb-5 banner_<?=$image?>">
+  <div class="banner mb-5 <?=$banner?>">
     <div class="overlay"></div>
     <div class="banner-inner">
       <div class="banner-content">
@@ -13,8 +13,7 @@
     <div class="container-fluid">
 
       <a class="navbar-brand" href="index.php">
-        <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-        EventStar
+        <img src="./assets/images/logo/eventstar.png" alt="Logo" height="24" class="d-inline-block align-text-top">
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -50,7 +49,7 @@
 
               <!-- ORGANIZATOR -->
 
-              <?php if ($_SESSION["roles"] != null && in_array(4, $_SESSION["roles"])) : ?>
+              <?php if ($_SESSION["roles"] != null && is_organizator()) : ?>
                 <hr>
                 <h6 class="mb-3"> Organizator menu </h6>
                 <li class="nav-item">
@@ -63,7 +62,7 @@
 
               <!-- ADMIN -->
 
-              <?php if ($_SESSION["roles"] != null && in_array(1, $_SESSION["roles"])) : ?>
+              <?php if ($_SESSION["roles"] != null && is_admin()) : ?>
                 <hr>
                 <h6 class="mv-3"> Admin menu </h6>
                 <li class="nav-item">
