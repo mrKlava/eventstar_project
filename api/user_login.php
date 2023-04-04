@@ -1,9 +1,8 @@
 <?php
-// init session
 session_start();
 
 include '../db/db.php';
-
+include '../functions/roles.php';
 
 // check table for keys
 if (isset($_POST["email"]) && isset($_POST["pwd"])) {
@@ -23,6 +22,7 @@ if (isset($_POST["email"]) && isset($_POST["pwd"])) {
     // check user exists
     if ($user) {
       if (password_verify($pwd, $user['hash'])) {
+
         // add user to session
         $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['name'] = $user['name'];
@@ -40,8 +40,8 @@ if (isset($_POST["email"]) && isset($_POST["pwd"])) {
           $_SESSION["roles"] = null;
         }
 
-
-        if (in_array(4, $_SESSION['roles'])) {
+        // check if user is organizator
+        if (is_organizator()) {
           $get_org_id = $db->prepare("SELECT organizator_id FROM organizators WHERE user_id = :user_id");
           $get_org_id->bindParam('user_id', $user['user_id']);
           $get_org_id->execute();
@@ -52,30 +52,18 @@ if (isset($_POST["email"]) && isset($_POST["pwd"])) {
         }
 
         // get list of events registered on
-        require './user_events_going.php';
-
-
-        // add registered event list
-        // $get_event_list = $db->prepare("CALL PR_get_user_events(:user_id)");
-        // $get_event_list->bindParam(':user_id', $user['user_id']);
-        // $get_event_list->execute();
-
-        // $event_list = $get_event_list->fetchAll(PDO::FETCH_ASSOC);
-        
-
-        // foreach ($event_list as $event) $_SESSION["event_list"][] = intval($event['event_id']);
-
+        require_once './user_events_going.php';
         
         // redirect to index
         header('location:../index.php');
 
       } else {
         $_SESSION['error'] = "401 UNAUTHORIZED - wrong password";
-        header('location:../login.php');
+        header('location:../index.php?page=login');
       }
     } else {
       $_SESSION['error'] = "401 UNAUTHORIZED - no user found";
-      header('location:../login.php');
+      header('location:../index.php?page=login');
     }
   }
 }

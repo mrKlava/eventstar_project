@@ -19,7 +19,6 @@ require_once FUNCTIONS . 'roles.php';
   if (file_exists(PAGES . "$page.php")) {
     include PAGES . "$page.php";
   } else {
-
     header('location:index.php?page=not-found');
   }
   ?>

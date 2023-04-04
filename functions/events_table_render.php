@@ -15,23 +15,42 @@
   </p>
   <thead>
     <tr>
-      <th data-sortable="true" data-field="id" data-width="75">
+      <th data-sortable="true" 
+          data-field="id" 
+          data-width="75"
+      >
         ID
       </th>
-      <th data-sortable="true" data-field="name">
+      <th data-sortable="true" 
+          data-field="name"
+      >
         Name
       </th>
       <th data-width="100">
         Registrations
       </th>
-      <th data-sortable="true" data-field="date" data-width="160">
+      <th data-sortable="true" 
+          data-field="date" 
+          data-width="160"
+      >
         Date
       </th>
-      <th data-sortable="true" data-field="city" data-width="200">
+      <th data-sortable="true" 
+          data-field="city" 
+          data-width="200"
+      >
         City
       </th>
-      <th data-width="32">Edit</th>
-      <th data-width="32">Delete</th>
+      <th data-width="50"
+          class="text-center"
+      >
+        Edit
+      </th>
+      <th data-width="50"
+          class="text-center"
+      >
+        Delete
+      </th>
     </tr>
   </thead>
   <tbody>

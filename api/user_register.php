@@ -1,7 +1,7 @@
 <?php
-include "../db/db.php";
-
 session_start();
+
+include '../db/db.php';
 
 
 if (
@@ -24,7 +24,7 @@ if (
 
     if ($_POST["pwd"] != $_POST["rePwd"]) {
       $_SESSION['error'] = "Passwords not matching";
-      header('location:../register.php');
+      header('location:../index.php?page=register');
       return;
     }
 
@@ -41,10 +41,9 @@ if (
 
     if ($user_exists) {
       $_SESSION['error'] = "User already exists";
-      header('location:../login.php');
+      header('location:../index.php?page=login');
       return;
     }
-
 
     $request = $db->prepare("INSERT INTO users (email, name, surname, hash, birth_date) VALUES(:email, :name, :surname, :hash, :birth_date)");
 

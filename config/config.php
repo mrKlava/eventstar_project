@@ -13,6 +13,7 @@ define('JS', './assets/js/');
 
 define('API', './api/');
 define('FUNCTIONS', './functions/');
+define('CLASSES', './class/');
 
 define('DB', './db/db.php');
 define('ROUTER', './config/router.php');

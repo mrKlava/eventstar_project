@@ -1,4 +1,6 @@
 <?php
+require_once CLASSES . 'Router.php';
+
 $routes = [
   'home'                => 'EventStar',
 
@@ -27,3 +29,5 @@ $banner = "banner_$page";
 $title = isset($routes[$page]) ? $routes[$page] : '404';
 
 $page_title = $title;
+
+$router = new Router();

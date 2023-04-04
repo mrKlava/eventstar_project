@@ -9,6 +9,7 @@
 ?>
 
   <article class="card mb-5">
+    <span class="d-none age-rating"><?=$event['age_rating']?></span>
     <div class="row g-0">
       <div class="col-md-4">
         <img src=<?= IMAGES . "events/event1.jpg" ?> class="img-fluid rounded-start" alt="event1">
@@ -17,7 +18,7 @@
         <div class="card-header text-muted px-5 d-flex justify-content-between flex-wrap">
           <p class="me-2">
             <small class="text-muted">
-              <span><?= $event['date'] ?></span> <span><?= $event['hour'] ?>:<?= $event['min'] ?></span>
+              <span class="event-date"><?= $event['date'] ?></span> <span class="event-time"><?= $event['hour'] ?>:<?= $event['min'] ?></span>
               in
               <span class="city-name"><?= $event['city_name'] ?></span>
             </small>
