@@ -3,7 +3,10 @@ include API . "event_fetch.php";
 
 if (empty($event)) : ?>
   <h2>Event whit this id was not found</h2>
-<?php else : ?>
+<?php else : 
+    $event['place_left'] = $event["person_max"] - $event['registrations'];
+
+  ?>
 
   <main>
     <div class="container my-5">
@@ -15,7 +18,7 @@ if (empty($event)) : ?>
         <div class="col-sm-8 mb-3">
           <p>Date: <span><?= $event['date'] ?></span> <span><?= $event['hour'] ?>:<?= $event['min'] ?></span></p>
           <?php if ($event["person_max"]) : ?>
-            <p>Places left: <?= $event["person_max"] - $event['registrations'] ?></p>
+            <p>Places left: <?= $event['place_left'] ?></p>
           <?php endif ?>
           <p>City: <?= $event["city_name"] ?></p>
           <p>Location: <?= $event["location_name"] ?></p>
@@ -37,11 +40,15 @@ if (empty($event)) : ?>
             <?php endif ?>
           </div>
           <div class="row">
-            <?php if (isset($_SESSION['user_id'])) : ?>
-              <?php if (in_array($event['event_id'], $_SESSION['events_going'])) : ?>
+            <?php if (is_user()) : ?>
+              <?php if (is_participant($event['event_id'])) : ?>
                 <a class="btn btn-danger" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Un-register</a>
               <?php else : ?>
-                <a class="btn btn-success" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
+                <?php if ($event['place_left'] > 0): ?>
+                  <a class="btn btn-success" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
+                <?php else : ?>
+                  <p>Event is full</p>
+                <?php endif ?>
               <?php endif ?>
             <?php else : ?>
               <p class="text-center mb-3">You must be logged in to register on event</p>

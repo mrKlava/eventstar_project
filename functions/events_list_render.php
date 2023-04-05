@@ -6,6 +6,8 @@
   $event["date"] = $date_obj->format('d/m/Y');
   $event["hour"] = $date_obj->format('H');
   $event["min"] =  $date_obj->format('i');
+
+  $event['place_left'] = $event["person_max"] - $event['registrations'];
 ?>
 
   <article class="card mb-5">
@@ -23,11 +25,15 @@
               <span class="city-name"><?= $event['city_name'] ?></span>
             </small>
           </p>
-          <?php if (isset($_SESSION['user_id'])) : ?>
-            <?php if (in_array($event['event_id'], $_SESSION['events_going'])) : ?>
+          <?php if (is_user()) : ?>
+            <?php if (is_participant($event['event_id'])) : ?>
               <p class="text-success">You are registered</p>
             <?php else : ?>
-              <a class="btn btn-primary" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
+              <?php if ($event['place_left'] > 0): ?>
+                  <a class="btn btn-primary" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
+                <?php else : ?>
+                  <p>Event is full</p>
+                <?php endif ?>
             <?php endif ?>
           <?php else : ?>
             <!-- show some info for not logged users -->

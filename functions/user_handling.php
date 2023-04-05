@@ -1,5 +1,6 @@
 <?php
 
+
 function is_logged() {
   if (!isset($_SESSION['user_id'])) {
     $_SESSION['error'] = 'Unauthorized';
@@ -26,4 +27,9 @@ function is_organizator() {
     return in_array(4, $_SESSION['roles']);
   }
   return false;
+}
+
+
+function is_participant($event_id) {
+  return in_array($event_id, $_SESSION['events_going']);
 }

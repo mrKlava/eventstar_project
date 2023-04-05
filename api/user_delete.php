@@ -2,13 +2,15 @@
 session_start();
 
 include '../db/db.php';
+require_once './functions/user_handling.php';
+
 
 /*  TODO
 
 */
 
 // check if if user is admin
-if (!in_array(1, $_SESSION['roles'])) header('location:index.php');
+if (!is_admin()) header('location:index.php');
 
 // handle delete of user
 

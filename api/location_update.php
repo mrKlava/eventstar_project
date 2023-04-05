@@ -1,9 +1,10 @@
 <?php
 session_start();
 include '../db/db.php';
+require_once './functions/user_handling.php';
 
 // check if if user is admin or organizator
-if (!in_array(1, $_SESSION['roles'])) header('location:index.php');
+if (!is_admin()) header('location:index.php');
 
 
 // check if all required fields are field

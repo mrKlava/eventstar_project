@@ -2,10 +2,13 @@
 session_start();
 
 include '../db/db.php';
+require_once '../functions/user_handling.php';
+
+// handle if there is no event_id and check if event exists
 
 $event_id = $_GET['event_id'];
 
-if (in_array($event_id, $_SESSION['events_going'])) {
+if (is_participant($event_id)) {
   $q = "DELETE FROM registrations WHERE event_id = :event_id AND user_id = :user_id";
 } else {
   $q = "INSERT INTO registrations (event_id, user_id, registration_date) VALUES (:event_id, :user_id, NOW())";

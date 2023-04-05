@@ -28,13 +28,13 @@ if ($event_id != "new") {
 
   // check if evemt exists or and is created by this user
   if (!$event) {
-    header('location:not-found.php');
+    header('location:index.php?page=not-found');
     $_SESSION["error"] = "Event do not exist";
     return;
-  } else if(is_organizator()) {
+  } else if(is_organizator() && !is_admin()) {
     if ($event["organizator_id"] != $_SESSION["org_id"]) {
       $_SESSION["error"] = "You are not organizator of this event";
-      header('location:not-found.php');
+      header('location:index.php?page=not-found');
       return;
     }
   }

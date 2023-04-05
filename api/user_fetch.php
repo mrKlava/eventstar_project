@@ -1,5 +1,5 @@
 <?php 
-require_once './functions/roles.php';
+require_once './functions/user_handling.php';
 
 is_logged();
 
@@ -15,6 +15,8 @@ if (is_admin()) {
     if (empty($user)) header('location:index.php?page=not-found');
 
     return;
+  } else {
+    header('location:../index.php?page=not_found');
   }
 }
 

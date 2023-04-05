@@ -4,7 +4,7 @@ session_start();
 require_once './config/config.php';
 require_once DB;
 require_once ROUTER;
-require_once FUNCTIONS . 'roles.php';
+require_once FUNCTIONS . 'user_handling.php';
 ?> 
 
 <!DOCTYPE html>
