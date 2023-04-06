@@ -6,12 +6,11 @@ include "../functions/user_handling.php";
 
 is_logged();
 
-if (!isset($_GET['user_id'])) header('location:index.php=not-found');
 
-$id = htmlspecialchars($_GET["user_id"]);
+$user_id = htmlspecialchars($_GET["user_id"]);
 
 // check if session user id matches with requested user id
-if ($_SESSION['user_id'] != $id && !is_admin()) {
+if ($_SESSION['user_id'] != $user_id && !is_admin()) {
   $_SESSION['error'] = 'Incorrect user ID';
   header('location:../index.php?page=not-found');
 }
@@ -46,14 +45,14 @@ if (
 
     if ($birth_date >= $today) {
       $_SESSION["error"] = "Invalid birth date";
-      header("location:../index.php?page=user-editor&user_id=$id");
+      header("location:../index.php?page=user-editor&user_id=$user_id");
       return;
     }
 
 
     // check if email is not in use
     $email_check = $db->prepare("SELECT * FROM users WHERE user_id != :id AND email LIKE :email");
-    $email_check->bindParam(':id', $id);
+    $email_check->bindParam(':id', $user_id);
     $email_check->bindParam(':email', $email);
 
     $email_check->execute();
@@ -63,7 +62,7 @@ if (
     // if email 
     if ($email_exists) {
       $_SESSION['error'] = "User with same email already exists";
-      header("location:../index.php?page=user-editor&user_id=$id");
+      header("location:../index.php?page=user-editor&user_id=$user_id");
       return;
     }
 
@@ -71,7 +70,7 @@ if (
     // update info
     $update = $db->prepare("UPDATE users SET email = :email, name = :name, surname = :surname, birth_date = :birth_date WHERE user_id = :id");
 
-    $update->bindParam(':id', $id);
+    $update->bindParam(':id', $user_id);
     $update->bindParam(':email', $email);
     $update->bindParam(':name', $name);
     $update->bindParam(':surname', $surname);
@@ -87,11 +86,12 @@ if (
       // check if password fields are not empty
       if(($_POST["pwd"] != '' || $_POST["rePwd"] != '')) {
         if($_POST["pwd"] == $_POST["rePwd"]) {
+      
           $hash = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
 
           $change_pwd = $db->prepare("UPDATE users SET hash = :hash WHERE user_id = :id");
 
-          $change_pwd->bindParam(':id', $id);
+          $change_pwd->bindParam(':id', $user_id);
           $change_pwd->bindParam(':hash', $hash);
 
           $change_pwd->execute();
@@ -106,5 +106,5 @@ if (
   }
 }
 
-header("location:../index.php?page=user-editor&user_id=$id");
+header("location:../index.php?page=user-editor&user_id=$user_id");
 return;

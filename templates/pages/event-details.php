@@ -71,6 +71,10 @@ if (empty($event)) : ?>
 
     <div class="my-5">
       <p class="d-none" id="address">Address: <?= $event["location_name"] ?> <?= $event["address"] ?> <?= $event["city_name"] ?></p>
+      <p class="d-none">
+        <span id="lat"><?=$event['location_lat']?></span>
+        <span id="long"><?=$event['location_long']?></span>
+      </p>
       <div class="my-5" id="map"></div>
     </div>
 

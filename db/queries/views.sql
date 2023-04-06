@@ -11,7 +11,7 @@ SELECT R.event_id
 CREATE VIEW VIEW_events_list
 AS
 SELECT E.event_id
-		,E.event_name
+        ,E.event_name
         ,E.description
         ,E.details
         ,E.person_max
@@ -22,6 +22,8 @@ SELECT E.event_id
         ,L.location_id
         ,L.location_name
         ,L.address
+        ,L.location_lat
+        ,L.location_long
         ,C.city_name
         ,O.organizator_name
 		,O.organizator_id
@@ -52,6 +54,8 @@ SELECT CL.location_id
         ,CL.city_id
         ,C.city_name
         ,L.address
+        ,L.location_lat
+        ,L.location_long
 	FROM city_location AS CL
 	INNER JOIN cities AS C
 		ON CL.city_id = C.city_id

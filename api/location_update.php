@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../db/db.php';
-require_once './functions/user_handling.php';
+require_once '../functions/user_handling.php';
 
 // check if if user is admin or organizator
 if (!is_admin()) header('location:index.php');
@@ -15,6 +15,8 @@ if (
   && isset($_POST["city_id"])
   && isset($_POST["description"])
   && isset($_POST["capacity"])
+  && isset($_POST["location_lat"])
+  && isset($_POST["location_long"])
 ) {
   // required are not empty
   if (
@@ -24,6 +26,8 @@ if (
     && $_POST["city_id"]         != ''
     && $_POST["description"]     != ''
     && $_POST["capacity"]        != ''
+    && $_POST["location_lat"]    != ''
+    && $_POST["location_long"]    != ''
   ) {
 
 
@@ -36,6 +40,16 @@ if (
     $city_id = htmlspecialchars($_POST['city_id']);
     $description = htmlspecialchars($_POST['description']);
 
+    $lat = floatval($_POST["location_lat"]);
+    $long = floatval($_POST["location_long"]);
+
+    if (($lat < -90 || $lat > 90) || ($long < -180 || $long > 180)) {
+      $_SESSION['error'] = 'Invalid position';
+      header("location:../index.php?page=location-editor&location_id=$location_id");
+
+      return;
+    }
+
 
     // check if location is not new
     // handle updating of location
@@ -45,13 +59,17 @@ if (
         ,address = :address
         ,description = :description
         ,capacity = :capacity
+        ,location_lat = :lat
+        ,location_long = :long
       WHERE location_id = :location_id");
 
       $update->bindParam(':location_id',   $location_id);
       $update->bindParam(':location_name', $location_name);
-      $update->bindParam(':address',   $address);
+      $update->bindParam(':address',       $address);
       $update->bindParam(':description',   $description);
       $update->bindParam(':capacity',      $capacity);
+      $update->bindParam(':lat',           $lat);
+      $update->bindParam(':long',          $long);
 
       $update->execute();
 
@@ -76,17 +94,23 @@ if (
         ,address
         ,description
         ,capacity
+        ,location_lat
+        ,location_long
       ) VALUES(
         :location_name
         ,:address
         ,:description
-        ,:capacity)"
+        ,:capacity
+        ,:location_lat
+        ,:location_long)"
       );
 
-      $create->bindParam(':location_name', $location_name);
-      $create->bindParam(':address',   $address);
-      $create->bindParam(':description',   $description);
-      $create->bindParam(':capacity',      $capacity);
+      $create->bindParam(':location_name',  $location_name);
+      $create->bindParam(':address',        $address);
+      $create->bindParam(':description',    $description);
+      $create->bindParam(':capacity',       $capacity);
+      $update->bindParam(':location_lat',   $lat);
+      $update->bindParam(':location_long',  $long);
 
       $create->execute();
 
@@ -120,5 +144,5 @@ if (
   $_SESSION['error'] = 'Fatal error';
 }
 
-header("location:../index.php?page=location-editor&location_id=" . $location_id);
+header("location:../index.php?page=location-editor&location_id=$location_id");
 

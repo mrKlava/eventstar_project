@@ -13,7 +13,9 @@ if ($_GET['location_id'] != 'new') {
     'city' => '',
     'capacity' => '',
     'address' => '',
-    'description' => ''
+    'description' => '',
+    'location_lat' => '',
+    'location_long' => ''
   ];
 }
 
@@ -21,7 +23,7 @@ include API . './locations_fetch.php';
 include API . './cities_fetch.php';
 ?>
 
-<main class="my-5">
+<main class="my-5 py-5">
   <section class="container">
 
     <p class="text-danger mb-4 text-center">
@@ -51,7 +53,7 @@ include API . './cities_fetch.php';
         </div>
         <div class="col-sm-3 mb-4">
           <label for="capacity" class="form-label">Capacity*</label>
-          <input type="number" class="form-control date-picker" name="capacity" value="<?= $location["capacity"] ?>" min="0" required>
+          <input type="number" class="form-control" name="capacity" value="<?= $location["capacity"] ?>" min="0" required>
         </div>
       </div>
       <div class="row mb-3">
@@ -70,6 +72,16 @@ include API . './cities_fetch.php';
               </option>
             <?php endforeach ?>
           </select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3 mb-4">
+          <label for="location_lat" class="form-label">Latitude*</label>
+          <input type="text" class="form-control" name="location_lat" value="<?= $location["location_lat"] ?>" required>
+        </div>
+        <div class="col-sm-3 mb-4">
+          <label for="location_long" class="form-label">Longitude*</label>
+          <input type="text" class="form-control" name="location_long" value="<?= $location["location_long"] ?>" required>
         </div>
       </div>
       <div class="row mb-5">

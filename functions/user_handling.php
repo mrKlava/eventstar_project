@@ -4,7 +4,7 @@
 function is_logged() {
   if (!isset($_SESSION['user_id'])) {
     $_SESSION['error'] = 'Unauthorized';
-    header('location:index.php?page=not-found');
+    header('location:index.php?page=login');
   }
 }
 

@@ -3,12 +3,12 @@ include API . "events_fetch.php";
 include API . "cities_fetch.php";
 ?>
 
-<main class="container">
-  <section class="filter mb-4">
+<main class="container my-5 py-5">
+  <section class="filter mb-5">
 
     <div class="row">
 
-      <div class="col-5 mb-3">
+      <div class="col-sm-5 mb-3">
         <div class="input-group">
           <input type="text" class="form-control" id="searchIn" placeholder="Search" aria-label="Search" aria-describedby="searchBtn">
           <button class="btn btn-primary" type="button" id="searchBtn">
@@ -30,7 +30,7 @@ include API . "cities_fetch.php";
         </select>
       </div>
 
-      <div class="col-sm-2">
+      <div class="col-sm-2 mb-3">
         <select name="rating-input" id="ratingIn" class="form-select" aria-label="">
           <option value="NULL" selected>Age rating</option>
           <option value="1">For Kids</option>
@@ -41,7 +41,7 @@ include API . "cities_fetch.php";
         </select>
       </div>
 
-      <div class="col-sm-2">
+      <div class="col-sm-2 mb-3">
         <select name="sort-inp" id="sortIn" class="form-select" aria-label="">
           <option value="" selected>Sort by</option>
           <option value="0">Name</option>
@@ -51,8 +51,6 @@ include API . "cities_fetch.php";
       </div>
 
     </div>
-
-
 
   </section>
 
