@@ -1,7 +1,7 @@
 <?php if (is_user()) header('location:index.php')?>
 
 <main class="container d-flex flex-column justify-content-center align-items-center">
-  <form class="row mb-3 border rounded-3 px-3 py-5" action="./api/user_register.php" method="post">
+  <form class="row mb-3 border rounded-3 px-3 py-5" action="./src/api/user_register.php" method="post">
     <div class="row">
       <div class="col-sm mb-3">
         <label for="name" class="form-label">Name</label>

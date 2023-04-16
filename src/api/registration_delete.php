@@ -2,7 +2,7 @@
 session_start();
 
 include '../db/db.php';
-require_once './functions/user_handling.php';
+require_once './src/functions/user_handling.php';
 
 /*  TODO
 

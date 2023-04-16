@@ -42,10 +42,10 @@ if (empty($event)) : ?>
           <div class="row">
             <?php if (is_user()) : ?>
               <?php if (is_participant($event['event_id'])) : ?>
-                <a class="btn btn-danger" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Un-register</a>
+                <a class="btn btn-danger" href="./src/api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Un-register</a>
               <?php else : ?>
                 <?php if ($event['place_left'] > 0): ?>
-                  <a class="btn btn-success" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
+                  <a class="btn btn-success" href="./src/api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
                 <?php else : ?>
                   <p>Event is full</p>
                 <?php endif ?>

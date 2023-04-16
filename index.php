@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once './config/config.php';
+require_once './src/config/config.php';
 require_once DB;
 require_once ROUTER;
 require_once FUNCTIONS . 'user_handling.php';

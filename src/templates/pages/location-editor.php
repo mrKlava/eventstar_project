@@ -35,7 +35,7 @@ include API . './cities_fetch.php';
       ?>
     </p>
 
-    <form action="./api/location_update.php?location_id=<?= $_GET["location_id"] ?>" method="POST" class="row mb-3 border rounded-3 px-3 py-5">
+    <form action="./src/api/location_update.php?location_id=<?= $_GET["location_id"] ?>" method="POST" class="row mb-3 border rounded-3 px-3 py-5">
       <h4 class="mb-5">Location Editor</h4>
       <div class="row mb-3">
         <div class="col-sm-3 mb-4">

@@ -30,7 +30,7 @@
               <p class="text-success">You are registered</p>
             <?php else : ?>
               <?php if ($event['place_left'] > 0): ?>
-                  <a class="btn btn-primary" href="./api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
+                  <a class="btn btn-primary" href="./src/api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
                 <?php else : ?>
                   <p>Event is full</p>
                 <?php endif ?>

@@ -73,7 +73,7 @@
         <td><?= $event['event_date'] ?></td>
         <td><?= $event['city_name'] ?></td>
         <td><a class="btn btn-primary py-0 px-1" href="index.php?page=event-editor&event_id=<?= $event['event_id'] ?>">E</a></td>
-        <td><a class="btn btn-danger py-0 px-1" href="api/event_delete.php?event_id=<?= $event['event_id'] ?>&org_id=<?= $event['organizator_id'] ?>">X</a></td>
+        <td><a class="btn btn-danger py-0 px-1" href="./src/api/event_delete.php?event_id=<?= $event['event_id'] ?>&org_id=<?= $event['organizator_id'] ?>">X</a></td>
       </tr>
     <?php endforeach ?>
   </tbody>

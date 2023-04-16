@@ -18,7 +18,7 @@ include API . 'cities_fetch.php';
       ?>
     </p>
 
-    <form action="./api/city_update.php" method="POST" class="row mb-5 border rounded-3 px-3 py-5">
+    <form action="./src/api/city_update.php" method="POST" class="row mb-5 border rounded-3 px-3 py-5">
       <h4 class="mb-5">City editor</h1>
         <div class="row mb-3">
           <div class="col-sm-6 mb-4">
@@ -59,7 +59,7 @@ include API . 'cities_fetch.php';
           <tr>
             <td><?= $city['city_id'] ?></td>
             <td><?= $city['city_name'] ?></td>
-            <td><a class="btn btn-danger py-0 px-1" href="api/city_delete.php?city_id=<?= $city['city_id'] ?>">X</a></td>
+            <td><a class="btn btn-danger py-0 px-1" href="./src/api/city_delete.php?city_id=<?= $city['city_id'] ?>">X</a></td>
           </tr>
         <?php endforeach ?>
       </tbody>

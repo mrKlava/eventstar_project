@@ -94,7 +94,7 @@
         <!-- HANDLE LOGIN/REGISTER/LOGOUT -->
 
         <?php if (isset($_SESSION['user_id'])) : ?>
-          <a class="btn btn-primary rounded-0" href="api/user_logout.php">Log out</a>
+          <a class="btn btn-primary rounded-0" href="./src/api/user_logout.php">Log out</a>
         <?php else : ?>
           <div class="d-flex">
             <a class="btn btn-primary rounded-0 w-50" href="index.php?page=login">Log in</a>

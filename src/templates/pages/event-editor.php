@@ -20,7 +20,7 @@ include API . './locations_fetch.php';
   <?php var_dump(isset($_SESSION['roles']))?>
   
   <section class="">
-    <form action="./api/event_update.php?event_id=<?= $_GET["event_id"] ?>&organizator_id=<?= $event['organizator_id'] ?>" method="POST" class="row mb-3 border rounded-3 px-3 py-5">
+    <form action="./src/api/event_update.php?event_id=<?= $_GET["event_id"] ?>&organizator_id=<?= $event['organizator_id'] ?>" method="POST" class="row mb-3 border rounded-3 px-3 py-5">
 
       <p class="text-danger mb-4 text-center">
         <?php

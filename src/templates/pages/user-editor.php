@@ -5,7 +5,7 @@ include API . 'user_fetch.php';
 ?>
 
 <main class="container mt-5">
-  <form class="row mb-3 border rounded-3 px-3 py-5" action="./api/user_update.php?user_id=<?= $_SESSION['user_id'] ?>" method="post">
+  <form class="row mb-3 border rounded-3 px-3 py-5" action="./src/api/user_update.php?user_id=<?= $_SESSION['user_id'] ?>" method="post">
     <div class="row">
       <div class="col-sm mb-3">
         <label for="name" class="form-label">Name*</label>

@@ -36,7 +36,7 @@ include API . 'event_participants_fetch.php';
             <td><?= $registrant['surname'] ?></td>
             <td><?= $registrant['email'] ?></td>
             <td><?= $registrant['registration_date'] ?></td>
-            <td><a class="btn btn-danger py-0 px-1" href="api/registration_delete.php?user_id=<?= $registrant['user_id'] ?>&event_id=<?= $_GET['event_id'] ?>">X</a></td>
+            <td><a class="btn btn-danger py-0 px-1" href="./src/api/registration_delete.php?user_id=<?= $registrant['user_id'] ?>&event_id=<?= $_GET['event_id'] ?>">X</a></td>
           </tr>
         <?php endforeach ?>
       </tbody>

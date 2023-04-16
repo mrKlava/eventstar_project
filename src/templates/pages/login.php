@@ -1,7 +1,7 @@
 <?php if (is_user()) header('location:index.php')?>
 
 <main class="container d-flex flex-column justify-content-center align-items-center my-5 py-5">
-  <form class="row mb-3 border rounded-3 px-3 py-5" action="./api/user_login.php" method="post">
+  <form class="row mb-3 border rounded-3 px-3 py-5" action="./src/api/user_login.php" method="post">
     <div class="form-floating form-outline mb-4">
       <input type="email" id="emailInput" class="form-control" name="email" placeholder="name@example.com" />
       <label for="emailInput">Email address</label>

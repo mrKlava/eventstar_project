@@ -26,7 +26,7 @@ include API . 'users_fetch.php';
           <td><?= $user['name'] ?></td>
           <td><?= $user['surname'] ?></td>
           <td><a class="btn btn-primary py-0 px-1" href="index.php?page=user-editor&user_id=<?= $user['user_id'] ?>">E</a></td>
-          <td><a class="btn btn-danger py-0 px-1" href="api/user_delete.php?user_id=<?= $user['user_id'] ?>">X</a></td>
+          <td><a class="btn btn-danger py-0 px-1" href="./src/api/user_delete.php?user_id=<?= $user['user_id'] ?>">X</a></td>
         </tr>
       <?php endforeach ?>
     </tbody>
