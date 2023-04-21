@@ -55,15 +55,15 @@ if (isset($_POST["email"]) && isset($_POST["pwd"])) {
         require_once './user_events_going.php';
         
         // redirect to index
-        header('location:../index.php');
+        header('location:../../index.php');
 
       } else {
         $_SESSION['error'] = "401 UNAUTHORIZED - wrong password";
-        header('location:../index.php?page=login');
+        header('location:../../index.php?page=login');
       }
     } else {
       $_SESSION['error'] = "401 UNAUTHORIZED - no user found";
-      header('location:../index.php?page=login');
+      header('location:../../index.php?page=login');
     }
   }
 }

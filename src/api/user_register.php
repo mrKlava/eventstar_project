@@ -24,7 +24,7 @@ if (
 
     if ($_POST["pwd"] != $_POST["rePwd"]) {
       $_SESSION['error'] = "Passwords not matching";
-      header('location:../index.php?page=register');
+      header('location:../../index.php?page=register');
       return;
     }
 
@@ -41,7 +41,7 @@ if (
 
     if ($user_exists) {
       $_SESSION['error'] = "User already exists";
-      header('location:../index.php?page=login');
+      header('location:../../index.php?page=login');
       return;
     }
 
@@ -55,7 +55,7 @@ if (
 
     $request->execute();
 
-    header('location:../index.php?page=login');
+    header('location:../../index.php?page=login');
     return;
   }
 }

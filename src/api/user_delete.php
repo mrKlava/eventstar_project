@@ -2,7 +2,7 @@
 session_start();
 
 include '../db/db.php';
-require_once './src/functions/user_handling.php';
+require_once '../functions/user_handling.php';
 
 
 /*  TODO
@@ -21,5 +21,5 @@ $delete_user->execute();
 
 $delete = $delete_user->fetch(PDO::FETCH_ASSOC);
 
-// header('location:../events-manager.php?id=' . $_SESSION['user_id']);
-header("location:" . $_SERVER['HTTP_REFERER']);
+header('location:../../index.php?page=users-manager');
+// header("location:" . $_SERVER['HTTP_REFERER']);

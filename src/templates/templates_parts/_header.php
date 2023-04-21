@@ -13,7 +13,7 @@
     <div class="container-fluid">
 
       <a class="navbar-brand" href="index.php">
-        <img src="./assets/images/logo/eventstar.png" alt="Logo" height="24" class="d-inline-block align-text-top">
+        <img src="./public/assets/images/logo/eventstar.png" alt="Logo" height="24" class="d-inline-block align-text-top">
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">

@@ -1,7 +1,5 @@
 <!-- TODO 
 - sorting bug on event name
-- pagination bug with dropdown
- 
 -->
 
 <table class="boot-table table table-striped table-hover table-sm">

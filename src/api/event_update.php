@@ -10,7 +10,7 @@ include '../functions/user_handling.php';
 */
 
 // check if if user is admin or organizator
-if (!is_admin() && !is_organizator()) header('location:index.php');
+if (!is_admin() && !is_organizator()) header('location:../../index.php');
 
 
 // check if all required fields are field
@@ -162,5 +162,4 @@ if (
   $_SESSION['error'] = 'Fatal error';
 }
 
-header("location:../index.php?page=event-editor&event_id=" . $_GET['event_id']);
-
+header("location:../../index.php?page=event-editor&event_id=" . $_GET['event_id']);

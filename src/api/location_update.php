@@ -4,7 +4,7 @@ include '../db/db.php';
 require_once '../functions/user_handling.php';
 
 // check if if user is admin or organizator
-if (!is_admin()) header('location:index.php');
+if (!is_admin()) header('location:../../index.php');
 
 
 // check if all required fields are field
@@ -20,13 +20,13 @@ if (
 ) {
   // required are not empty
   if (
-    $_GET["location_id"]         != ''
-    && $_POST["location_name"]   != ''
-    && $_POST["address"]         != ''
-    && $_POST["city_id"]         != ''
-    && $_POST["description"]     != ''
-    && $_POST["capacity"]        != ''
-    && $_POST["location_lat"]    != ''
+    $_GET["location_id"]          != ''
+    && $_POST["location_name"]    != ''
+    && $_POST["address"]          != ''
+    && $_POST["city_id"]          != ''
+    && $_POST["description"]      != ''
+    && $_POST["capacity"]         != ''
+    && $_POST["location_lat"]     != ''
     && $_POST["location_long"]    != ''
   ) {
 
@@ -45,7 +45,7 @@ if (
 
     if (($lat < -90 || $lat > 90) || ($long < -180 || $long > 180)) {
       $_SESSION['error'] = 'Invalid position';
-      header("location:../index.php?page=location-editor&location_id=$location_id");
+      header("location:../../index.php?page=location-editor&location_id=$location_id");
 
       return;
     }
@@ -109,8 +109,8 @@ if (
       $create->bindParam(':address',        $address);
       $create->bindParam(':description',    $description);
       $create->bindParam(':capacity',       $capacity);
-      $update->bindParam(':location_lat',   $lat);
-      $update->bindParam(':location_long',  $long);
+      $create->bindParam(':location_lat',   $lat);
+      $create->bindParam(':location_long',  $long);
 
       $create->execute();
 
@@ -144,5 +144,5 @@ if (
   $_SESSION['error'] = 'Fatal error';
 }
 
-header("location:../index.php?page=location-editor&location_id=$location_id");
+header("location:../../index.php?page=location-editor&location_id=$location_id");
 

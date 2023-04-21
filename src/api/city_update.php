@@ -4,7 +4,7 @@ session_start();
 include '../db/db.php';
 include '../functions/user_handling.php';
 
-if (is_admin()) header('location:index.php?page=not-found');
+if (!is_admin()) header('location:index.php?page=not-found');
 
 // check if city name is set and not empty
 if (isset($_POST['city_id']) && $_POST["city_id"] != '' && $_POST["city_name"] != '') {
@@ -24,7 +24,7 @@ if (isset($_POST['city_id']) && $_POST["city_id"] != '' && $_POST["city_name"] !
   var_dump(empty($exists));
 
   // prepare query
-  if ($_POST["city_id"] == NULL && empty($exists)) {
+  if ($_POST["city_id"] == "NULL" && empty($exists)) {
     $insert_city = $db->prepare("INSERT INTO cities (city_name) VALUES(?)");
     $insert_city->execute([$city_name]);
 

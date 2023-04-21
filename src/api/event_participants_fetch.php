@@ -1,3 +1,5 @@
+<!-- HEADER REDIRECT ERROR LINE: 5 12-->
+
 <?php 
 is_logged();
 

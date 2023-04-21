@@ -12,7 +12,7 @@ $user_id = htmlspecialchars($_GET["user_id"]);
 // check if session user id matches with requested user id
 if ($_SESSION['user_id'] != $user_id && !is_admin()) {
   $_SESSION['error'] = 'Incorrect user ID';
-  header('location:../index.php?page=not-found');
+  header('location:../../index.php?page=not-found');
 }
 
     /* HANDLE USER INFO */
@@ -45,13 +45,14 @@ if (
 
     if ($birth_date >= $today) {
       $_SESSION["error"] = "Invalid birth date";
-      header("location:../index.php?page=user-editor&user_id=$user_id");
+      header("location:../../index.php?page=user-editor&user_id=$user_id");
+
       return;
     }
 
 
     // check if email is not in use
-    $email_check = $db->prepare("SELECT * FROM users WHERE user_id != :id AND email LIKE :email");
+    $email_check = $db->prepare("SELECT * FROM users WHERE user_id <> :id AND email LIKE :email");
     $email_check->bindParam(':id', $user_id);
     $email_check->bindParam(':email', $email);
 
@@ -62,7 +63,8 @@ if (
     // if email 
     if ($email_exists) {
       $_SESSION['error'] = "User with same email already exists";
-      header("location:../index.php?page=user-editor&user_id=$user_id");
+      header("location:../../index.php?page=user-editor&user_id=$user_id");
+
       return;
     }
 
@@ -106,5 +108,4 @@ if (
   }
 }
 
-header("location:../index.php?page=user-editor&user_id=$user_id");
-return;
+header("location:../../index.php?page=user-editor&user_id=$user_id");
