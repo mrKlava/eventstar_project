@@ -1,9 +1,9 @@
 # PROJECT "EventStar"
 
-# Branch - dev
+# Branch - master
 
 ## TODO 
-  - user / organizator editor header error (if user/organizator wrong id show error)
+  - 
 
 ### DB
   - 
