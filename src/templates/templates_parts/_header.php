@@ -1,15 +1,15 @@
 <header class="header">
 
-  <div class="banner mb-5 <?=$banner?>">
+  <div id="banner" class="banner mb-5 <?=$banner?>">
     <div class="overlay"></div>
     <div class="banner-inner">
       <div class="banner-content">
-        <h1 class="page-title"><?= $page_title ?></h1>
+        <h1 id="bannerTitle" class="page-title"><?= $page_title ?></h1>
       </div>
     </div>
   </div>
 
-  <nav class="navbar bg-light fixed-top">
+  <nav class="navbar bg-secondary fixed-top">
     <div class="container-fluid">
 
       <a class="navbar-brand" href="index.php">

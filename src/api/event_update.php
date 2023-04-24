@@ -65,10 +65,34 @@ if (
     $age_rating = htmlspecialchars($_POST['age_rating']);
     $person_max = htmlspecialchars($_POST['person_max']);
 
-    $image = htmlspecialchars($_POST['image']);
+    $src = htmlspecialchars($_POST['image']);
 
+    if ($src !== null) {
+      $get_image = $db->prepare("SELECT * FROM images WHERE src = ?");
+      $get_image->execute([$src]);
 
+      $image = $get_image->fetch(PDO::FETCH_ASSOC);
+      
+      // handle image
+      $get_image_old = $db->prepare("SELECT * FROM event_image WHERE event_id = ?");
+      $get_image_old->execute([$event_id]);
 
+      $image_old = $get_image_old->fetch(PDO::FETCH_ASSOC);
+
+      if ($image['image_id'] != $image_old['image_id']) {
+        $delete = $db->prepare('DELETE event_image WHERE event_id = ? AND image_id = ?');
+        $delete->execute([$event_id, $image_old['image_id']]);
+        
+        $insert = $db->prepare('INSERT INTO event_image(image_id, event_id) VALUES (?, ?)');
+        $insert->execute([$image['image_id'], $event_id]);
+
+        $deleted = $delete->fetch(PDO::FETCH_ASSOC);
+        $inserted = $insert->fetch(PDO::FETCH_ASSOC);
+      }
+    } else {
+      $delete = $db->prepare('DELETE event_image WHERE event_id = ? AND image_id = ?');
+      $delete->execute([$event_id, $image_old['image_id']]);
+    }
 
     // check if event is not new
     // handle updating of event

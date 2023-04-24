@@ -59,13 +59,19 @@
   $event["min"] =  $date_obj->format('i');
 
   $event['place_left'] = $event["person_max"] - $event['registrations'];
+
+  if (file_exists(IMAGES . 'events/' . $event['src'])) {
+    $image = IMAGES . 'events/' . $event['src'];
+  } else {
+    $image = IMAGES . "events/event1.jpg";
+  }
 ?>
 
   <article class="card mb-5">
     <span class="d-none age-rating"><?=$event['age_rating']?></span>
     <div class="row g-0">
       <div class="col-md-4">
-        <img src=<?= IMAGES . "events/event1.jpg" ?> class="img-fluid rounded-start" alt="event1">
+        <img src=<?= $image ?> class="img-fluid rounded-start" alt=<?= $image ?>>
       </div>
       <div class="col-md-8">
         <div class="card-header text-muted px-5 d-flex justify-content-between flex-wrap">

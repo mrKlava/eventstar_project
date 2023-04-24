@@ -3,15 +3,13 @@ include API . "event_fetch.php";
 
 if (empty($event)) : ?>
   <h2>Event whit this id was not found</h2>
-<?php else : 
-    $event['place_left'] = $event["person_max"] - $event['registrations'];
-
-  ?>
+<?php else :
+  $event['place_left'] = $event["person_max"] - $event['registrations'];
+?>
 
   <main>
-    <div class="container my-5">
-      <h1><?=$event['event_name']?></h1>
-    </div>
+    <span id="eventTitle" class="d-none"><?= $event['event_name'] ?></span>
+    <span id="src" class="d-none"><?=$event['src']?></span>
 
     <section class="container my-5">
       <div class="row mb-3 border rounded-3 px-3 py-3 mx-1">
@@ -44,7 +42,7 @@ if (empty($event)) : ?>
               <?php if (is_participant($event['event_id'])) : ?>
                 <a class="btn btn-danger" href="./src/api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Un-register</a>
               <?php else : ?>
-                <?php if ($event['place_left'] > 0): ?>
+                <?php if ($event['place_left'] > 0) : ?>
                   <a class="btn btn-success" href="./src/api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
                 <?php else : ?>
                   <p>Event is full</p>
@@ -72,8 +70,8 @@ if (empty($event)) : ?>
     <div class="my-5">
       <p class="d-none" id="address">Address: <?= $event["location_name"] ?> <?= $event["address"] ?> <?= $event["city_name"] ?></p>
       <p class="d-none">
-        <span id="lat"><?=$event['location_lat']?></span>
-        <span id="long"><?=$event['location_long']?></span>
+        <span id="lat"><?= $event['location_lat'] ?></span>
+        <span id="long"><?= $event['location_long'] ?></span>
       </p>
       <div class="my-5" id="map"></div>
     </div>

@@ -99,7 +99,7 @@ include API . './locations_fetch.php';
       <div class="row">
         <div class="col mb-4">
           <label for="image" class="form-label">Image</label>
-          <input type="text" class="form-control" name="image" value="<?= $event["name"] ?>">
+          <input type="text" class="form-control" name="image" value="<?= $event["src"] ?>">
         </div>
       </div>
 

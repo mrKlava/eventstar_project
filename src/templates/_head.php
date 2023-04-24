@@ -28,6 +28,7 @@
 
   <script defer src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
   <script defer src=<?= JS . 'map.js' ?> ></script>
+  <script defer src=<?= JS . 'eventBanner.js' ?> ></script>
 <?php endif ?>
 
 

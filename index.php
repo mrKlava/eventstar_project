@@ -21,6 +21,8 @@ require_once FUNCTIONS . 'user_handling.php';
   } else {
     header('location:index.php?page=not-found');
   }
+
+  include TEMPLATE_PARTS . '_footer.php';
   ?>
 </body>
 

@@ -63,6 +63,7 @@ if ($event_id != "new") {
     "organizator_name" => $organizator["organizator_name"],
     "organizator_id" => $organizator["organizator_id"],
     "event_name" => "",
+    "src" => "",
     "name" => "",
     "date" => "",
     "hour" => "",
