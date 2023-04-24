@@ -10,12 +10,12 @@ include API . 'users_fetch.php';
   <table class="boot-table table table-striped table-hover table-sm">
     <thead>
       <tr>
-        <th data-sortable="true" data-field="id">ID</th>
+        <th data-sortable="true" data-field="id" data-width="75">ID</th>
         <th data-sortable="true" data-field="email">Email</th>
-        <th data-sortable="true" data-field="name">Name</th>
-        <th data-sortable="true" data-field="surname">Surname</th>
-        <th>EDIT</th>
-        <th>Delete</th>
+        <th data-sortable="true" data-field="name" data-width="250">Name</th>
+        <th data-sortable="true" data-field="surname" data-width="250">Surname</th>
+        <th data-width="50" class="text-center">EDIT</th>
+        <th data-width="50" class="text-center">Delete</th>
       </tr>
     </thead>
     <tbody>
