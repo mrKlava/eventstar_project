@@ -3,7 +3,7 @@
 # Branch - dev
 
 ## TODO 
-  - add js functions
+  - user / organizator editor header error (if user/organizator wrong id show error)
 
 ### DB
   - 

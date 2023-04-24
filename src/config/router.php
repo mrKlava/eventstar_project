@@ -9,6 +9,9 @@ $routes = [
   'user-editor'         => 'Edit Profile',
   'users-manager'       => 'Users Manager',
 
+  'organizators-manager' => 'Organizator Manager',
+  'organizator-editor' => 'Organizator Editor',
+
   'event-editor'        => 'Event Editor',
   'event-participants'  => 'Event Participants',
   'event-details'       => 'Event Details',

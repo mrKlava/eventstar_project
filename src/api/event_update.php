@@ -4,10 +4,6 @@ session_start();
 include '../db/db.php';
 include '../functions/user_handling.php';
 
-/*  TODO
--- validate inputs from form
-
-*/
 
 // check if if user is admin or organizator
 if (!is_admin() && !is_organizator()) header('location:../../index.php');
@@ -102,15 +98,7 @@ if (
 
       $update->execute();
 
-      var_dump($update);
-
       $resp = $update->fetch(PDO::FETCH_ASSOC);
-
-      var_dump($resp);
-
-      var_dump($location_id);
-
-      echo 'updated';
 
       // handle creation of new event
     } else if ($event_id == "new") {
@@ -148,12 +136,7 @@ if (
 
       $create->execute();
 
-      var_dump($create);
-
       $resp = $create->fetch(PDO::FETCH_ASSOC);
-
-      var_dump($resp);
-
     }
   } else {
     $_SESSION['error'] = 'Please fill all required fields';

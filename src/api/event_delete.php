@@ -5,11 +5,6 @@ include '../db/db.php';
 include '../functions/user_handling.php';
 
 
-/*  TODO
--- validate inputs from form
-
-*/
-
 // check if if user is admin or organizator
 if (!is_admin() && !is_organizator()) header('location:index.php?page=not-found');
 

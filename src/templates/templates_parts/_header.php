@@ -58,6 +58,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="index.php?page=event-editor&event_id=new">Create Event</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="index.php?page=organizator-editor">Organizator Profile</a>
+                </li>
               <?php endif ?>
 
               <!-- ADMIN -->
@@ -67,6 +70,9 @@
                 <h6 class="mv-3"> Admin menu </h6>
                 <li class="nav-item">
                   <a class="nav-link" href="index.php?page=users-manager">User</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="index.php?page=organizators-manager">Organizators</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="index.php?page=events-manager&events=all">Events</a>
