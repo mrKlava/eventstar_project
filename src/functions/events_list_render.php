@@ -17,8 +17,8 @@
         <select class="form-select" id="cityIn" name="location_id" aria-label="Select city">
           <option value="NULL" selected>All cities</option>
           <?php foreach ($cities as $city) : ?>
-            <option value="<?= $city["city_name"] ?>">
-              <?= $city["city_name"] ?>
+            <option value="<?=htmlspecialchars($city["city_name"])?>">
+              <?=htmlspecialchars($city["city_name"])?>
             </option>
           <?php endforeach ?>
         </select>
@@ -68,18 +68,18 @@
 ?>
 
   <article class="card mb-5">
-    <span class="d-none age-rating"><?=$event['age_rating']?></span>
+    <span class="d-none age-rating"><?=htmlspecialchars($event['age_rating']) ?></span>
     <div class="row g-0">
       <div class="col-md-4">
-        <img src=<?= $image ?> class="img-fluid rounded-start" alt=<?= $image ?>>
+        <img src=<?= htmlspecialchars($image) ?> class="img-fluid rounded-start" alt=<?= htmlspecialchars($image) ?>>
       </div>
       <div class="col-md-8">
         <div class="card-header text-muted px-5 d-flex justify-content-between flex-wrap">
           <p class="me-2">
             <small class="text-muted">
-              <span class="event-date"><?= $event['date'] ?></span> <span class="event-time"><?= $event['hour'] ?>:<?= $event['min'] ?></span>
+              <span class="event-date"><?= htmlspecialchars($event['date']) ?></span> <span class="event-time"><?= $event['hour'] ?>:<?= $event['min'] ?></span>
               in
-              <span class="city-name"><?= $event['city_name'] ?></span>
+              <span class="city-name"><?= htmlspecialchars($event['city_name']) ?></span>
             </small>
           </p>
           <?php if (is_user()) : ?>
@@ -87,7 +87,7 @@
               <p class="text-success">You are registered</p>
             <?php else : ?>
               <?php if ($event['place_left'] > 0): ?>
-                  <a class="btn btn-primary" href="./src/api/user_handle_registration.php?event_id=<?= $event['event_id'] ?>">Register</a>
+                  <a class="btn btn-primary" href="./src/api/user_handle_registration.php?event_id=<?= htmlspecialchars($event['event_id']) ?>">Register</a>
                 <?php else : ?>
                   <p>Event is full</p>
                 <?php endif ?>
@@ -98,9 +98,9 @@
 
         </div>
         <div class="card-body p-5">
-          <h5 class="card-title mb-3 event-name"><?= $event['event_name'] ?></h5>
-          <p class="card-text mb-3"><?= $event['details'] ?></p>
-          <a class="card-link" href="index.php?page=event-details&event_id=<?= $event['event_id'] ?>">More details</a>
+          <h5 class="card-title mb-3 event-name"><?= htmlspecialchars($event['event_name']) ?></h5>
+          <p class="card-text mb-3"><?= htmlspecialchars($event['details']) ?></p>
+          <a class="card-link" href="index.php?page=event-details&event_id=<?= htmlspecialchars($event['event_id']) ?>">More details</a>
         </div>
       </div>
     </div>

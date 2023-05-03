@@ -54,24 +54,24 @@
   <tbody>
     <?php foreach ($events as $event) : ?>
       <tr>
-        <td><?= $event['event_id'] ?></td>
+        <td><?= htmlspecialchars($event['event_id']) ?></td>
         <td>
-          <a class="card-link" href="index.php?page=event-details&event_id=<?= $event['event_id'] ?>">
-            <?= $event['event_name'] ?>
+          <a class="card-link" href="index.php?page=event-details&event_id=<?= htmlspecialchars($event['event_id']) ?>">
+            <?= htmlspecialchars($event['event_name']) ?>
           </a>
         </td>
         <td>
-          <a href="index.php?page=event-participants&event_id=<?= $event['event_id'] ?>">
-            <?php $event['registrations'] = $event['registrations'] == NULL ? 0 : $event['registrations'] ?>
-            <?= $event['registrations'] ?>
+          <a href="index.php?page=event-participants&event_id=<?= htmlspecialchars($event['event_id']) ?>">
+            <?php $event['registrations'] = $event['registrations'] == NULL ? 0 : htmlspecialchars($event['registrations']) ?>
+            <?= htmlspecialchars($event['registrations']) ?>
             /
-            <?= $event['person_max'] ?>
+            <?= htmlspecialchars($event['person_max']) ?>
           </a>
         </td>
-        <td><?= $event['event_date'] ?></td>
-        <td><?= $event['city_name'] ?></td>
-        <td><a class="btn btn-primary py-0 px-1" href="index.php?page=event-editor&event_id=<?= $event['event_id'] ?>">E</a></td>
-        <td><a class="btn btn-danger py-0 px-1" href="./src/api/event_delete.php?event_id=<?= $event['event_id'] ?>&org_id=<?= $event['organizator_id'] ?>">X</a></td>
+        <td><?= htmlspecialchars($event['event_date']) ?></td>
+        <td><?= htmlspecialchars($event['city_name']) ?></td>
+        <td><a class="btn btn-primary py-0 px-1" href="index.php?page=event-editor&event_id=<?= htmlspecialchars($event['event_id']) ?>">E</a></td>
+        <td><a class="btn btn-danger py-0 px-1" href="./src/api/event_delete.php?event_id=<?= htmlspecialchars($event['event_id']) ?>&org_id=<?= htmlspecialchars($event['organizator_id']) ?>">X</a></td>
       </tr>
     <?php endforeach ?>
   </tbody>

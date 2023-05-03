@@ -31,12 +31,12 @@ include API . 'event_participants_fetch.php';
       <tbody>
         <?php foreach ($registrants as $registrant) : ?>
           <tr>
-            <td><?= $registrant['user_id'] ?></td>
-            <td><?= $registrant['name'] ?></td>
-            <td><?= $registrant['surname'] ?></td>
-            <td><?= $registrant['email'] ?></td>
-            <td><?= $registrant['registration_date'] ?></td>
-            <td><a class="btn btn-danger py-0 px-1" href="./src/api/registration_delete.php?user_id=<?= $registrant['user_id'] ?>&event_id=<?= $_GET['event_id'] ?>">X</a></td>
+            <td><?= htmlspecialchars($registrant['user_id']) ?></td>
+            <td><?= htmlspecialchars($registrant['name']) ?></td>
+            <td><?= htmlspecialchars($registrant['surname']) ?></td>
+            <td><?= htmlspecialchars($registrant['email']) ?></td>
+            <td><?= htmlspecialchars($registrant['registration_date']) ?></td>
+            <td><a class="btn btn-danger py-0 px-1" href="./src/api/registration_delete.php?user_id=<?= htmlspecialchars($registrant['user_id']) ?>&event_id=<?= htmlspecialchars($_GET['event_id']) ?>">X</a></td>
           </tr>
         <?php endforeach ?>
       </tbody>

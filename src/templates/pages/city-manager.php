@@ -26,8 +26,8 @@ include API . 'cities_fetch.php';
             <select class="form-select" name="city_id" aria-label="Select city" required>
               <option value="NULL" selected>Add new city -></option>
               <?php foreach ($cities as $city) : ?>
-                <option value="<?= $city["city_id"] ?>">
-                  <?= $city["city_name"] ?>
+                <option value="<?= htmlspecialchars($city["city_id"]) ?>">
+                  <?= htmlspecialchars($city["city_name"]) ?>
                 </option>
               <?php endforeach ?>
             </select>
@@ -57,9 +57,9 @@ include API . 'cities_fetch.php';
       <tbody>
         <?php foreach ($cities as $city) : ?>
           <tr>
-            <td><?= $city['city_id'] ?></td>
-            <td><?= $city['city_name'] ?></td>
-            <td><a class="btn btn-danger py-0 px-1" href="./src/api/city_delete.php?city_id=<?= $city['city_id'] ?>">X</a></td>
+            <td><?= htmlspecialchars($city['city_id']) ?></td>
+            <td><?= htmlspecialchars($city['city_name']) ?></td>
+            <td><a class="btn btn-danger py-0 px-1" href="./src/api/city_delete.php?city_id=<?= htmlspecialchars($city['city_id']) ?>">X</a></td>
           </tr>
         <?php endforeach ?>
       </tbody>

@@ -3,7 +3,7 @@ is_logged();
 
 include API . 'user_fetch.php'; 
 
-$user_id = isset($_GET['user_id']) ? $_GET['user_id'] : $_SESSION['user_id'];
+$user_id = isset($_GET['user_id']) ? htmlspecialchars($_GET['user_id']) : $_SESSION['user_id'];
 ?>
 
 <main class="container mt-5">
@@ -11,21 +11,21 @@ $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : $_SESSION['user_id'];
     <div class="row">
       <div class="col-sm mb-3">
         <label for="name" class="form-label">Name*</label>
-        <input type="text" class="form-control" name="name" value="<?= $user['name'] ?>" required />
+        <input type="text" class="form-control" name="name" value="<?= htmlspecialchars($user['name']) ?>" required />
       </div>
       <div class="col-sm mb-3">
         <label for="surname" class="form-label">Surname*</label>
-        <input type="text" class="form-control" name="surname" value="<?= $user['surname'] ?>" required />
+        <input type="text" class="form-control" name="surname" value="<?= htmlspecialchars($user['surname']) ?>" required />
       </div>
     </div>
     <div class="row">
       <div class="col-sm-8 mb-3">
         <label for="email" class="form-label">Email*</label>
-        <input type="email" class="form-control" name="email" value="<?= $user['email'] ?>" required />
+        <input type="email" class="form-control" name="email" value="<?= htmlspecialchars($user['email']) ?>" required />
       </div>
       <div class="col-sm-4 mb-3">
         <label for="bdate" class="form-label">Birth Date*</label>
-        <input type="date" class="form-control date-picker" name="bdate" value="<?= $user['birth_date'] ?>" required />
+        <input type="date" class="form-control date-picker" name="bdate" value="<?= htmlspecialchars($user['birth_date']) ?>" required />
       </div>
     </div>
     <div class="row">

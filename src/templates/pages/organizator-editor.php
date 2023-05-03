@@ -30,12 +30,12 @@ include API . 'users_fetch.php';
 
 <main class="container mt-5">
 
-  <form class="row mb-3 border rounded-3 px-3 py-5" action="./src/api/organizator_update.php?organizator_id=<?= $organizator['organizator_id'] ?>" method="post">
+  <form class="row mb-3 border rounded-3 px-3 py-5" action="./src/api/organizator_update.php?organizator_id=<?= htmlspecialchars($organizator['organizator_id']) ?>" method="post">
 
     <div class="row mb-3">
       <div class="col-sm-3 mb-4">
         <?php if ($organizator['organizator_id'] != "new") : ?>
-          <h4>Organizator ID : <span class="ms-2"><?= $organizator['organizator_id'] ?></span></h4>
+          <h4>Organizator ID : <span class="ms-2"><?= htmlspecialchars($organizator['organizator_id']) ?></span></h4>
         <?php else: ?>
           <h4>New Organizator</h4>
         <?php endif ?>
@@ -47,7 +47,7 @@ include API . 'users_fetch.php';
           <label for="user_id" class="form-label">User ID*</label>
 
           <?php if ($current): ?>
-            <input type="text" class="form-control border-0" name="user_id" value="<?= $organizator["user_id"] ?>" readonly>
+            <input type="text" class="form-control border-0" name="user_id" value="<?= htmlspecialchars($organizator["user_id"]) ?>" readonly>
       </div>
           <?php else: ?>
             <select class="form-select" 
@@ -55,12 +55,12 @@ include API . 'users_fetch.php';
                 aria-label="Select user" 
                 required
                 <?= $curernt ? 'disabled' : null?>>
-              <?php $sel_user = $organizator['user_id'] ?>
+              <?php $sel_user = htmlspecialchars($organizator['user_id']) ?>
               <option <?php if ($sel_user == 'NULL') echo ('selected') ?> value="NULL" disabled>User ID - Email</option>
               <?php foreach ($users as $user) : ?>
-                <option <?php if ($sel_user == $user["user_id"]) echo ('selected') ?> value="<?= $user["user_id"] ?>">
-                  <?= $user["user_id"] ?> -
-                  <?= $user["email"] ?>
+                <option <?php if ($sel_user == htmlspecialchars($user["user_id"])) echo ('selected') ?> value="<?= htmlspecialchars($user["user_id"]) ?>">
+                  <?= htmlspecialchars($user["user_id"]) ?> -
+                  <?= htmlspecialchars($user["email"]) ?>
                 </option>
               <?php endforeach ?>
             </select>
@@ -72,14 +72,14 @@ include API . 'users_fetch.php';
     <div class="row">
       <div class="col mb-4">
         <label for="organizator_name" class="form-label">Title*</label>
-        <input type="text" class="form-control" name="organizator_name" value="<?= $organizator["organizator_name"] ?>" required>
+        <input type="text" class="form-control" name="organizator_name" value="<?= htmlspecialchars($organizator["organizator_name"]) ?>" required>
       </div>
     </div>
 
     <div class="row mb-4">
       <div class="col">
         <label for="description" class="form-label">Description*</label>
-        <textarea class="form-control" name="description" style="height: 150px" required><?= $organizator["description"] ?></textarea>
+        <textarea class="form-control" name="description" style="height: 150px" required><?= htmlspecialchars($organizator["description"]) ?></textarea>
       </div>
     </div>
 

@@ -40,7 +40,7 @@ include API . './cities_fetch.php';
       <div class="row mb-3">
         <div class="col-sm-3 mb-4">
           <?php if ($_GET["location_id"] && $_GET["location_id"] != "new") : ?>
-            <h5>Location ID : <span class="ms-2"><?= $location["location_id"] ?></span></h5>
+            <h5>Location ID : <span class="ms-2"><?= htmlspecialchars($location["location_id"]) ?></span></h5>
           <?php else : ?>
             <h5>New Location</h5>
           <?php endif ?>
@@ -49,26 +49,26 @@ include API . './cities_fetch.php';
       <div class="row mb-3">
         <div class="col mb-4">
           <label for="location_name" class="form-label">Name*</label>
-          <input type="text" class="form-control" name="location_name" value="<?= $location["location_name"] ?>" required>
+          <input type="text" class="form-control" name="location_name" value="<?= htmlspecialchars($location["location_name"]) ?>" required>
         </div>
         <div class="col-sm-3 mb-4">
           <label for="capacity" class="form-label">Capacity*</label>
-          <input type="number" class="form-control" name="capacity" value="<?= $location["capacity"] ?>" min="0" required>
+          <input type="number" class="form-control" name="capacity" value="<?= htmlspecialchars($location["capacity"]) ?>" min="0" required>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-sm-8 mb-4">
           <label for="address" class="form-label">Address*</label>
-          <input type="text" class="form-control" name="address" value="<?= $location["address"] ?>" required>
+          <input type="text" class="form-control" name="address" value="<?= htmlspecialchars($location["address"]) ?>" required>
         </div>
         <div class="col-sm-4 mb-4">
           <label for="city_id" class="form-label">City Name*</label>
           <select class="form-select" name="city_id" aria-label="Select city" required>
             <option <?php if ($_GET['location_id'] === 'new') echo ('selected') ?> disabled>Select city</option>
-            <?php $sel_city = $location['city_id'] ?>
+            <?php $sel_city = htmlspecialchars($location['city_id']) ?>
             <?php foreach ($cities as $city) : ?>
-              <option <?php if ($sel_city == $city["city_id"]) echo ('selected') ?> value="<?= $city["city_id"] ?>">
-                <?= $city["city_name"] ?>
+              <option <?php if ($sel_city == $city["city_id"]) echo ('selected') ?> value="<?= htmlspecialchars($city["city_id"]) ?>">
+                <?= htmlspecialchars($city["city_name"]) ?>
               </option>
             <?php endforeach ?>
           </select>
@@ -77,17 +77,17 @@ include API . './cities_fetch.php';
       <div class="row mb-3">
         <div class="col-sm-3 mb-4">
           <label for="location_lat" class="form-label">Latitude*</label>
-          <input type="text" class="form-control" name="location_lat" value="<?= $location["location_lat"] ?>" required>
+          <input type="text" class="form-control" name="location_lat" value="<?= htmlspecialchars($location["location_lat"]) ?>" required>
         </div>
         <div class="col-sm-3 mb-4">
           <label for="location_long" class="form-label">Longitude*</label>
-          <input type="text" class="form-control" name="location_long" value="<?= $location["location_long"] ?>" required>
+          <input type="text" class="form-control" name="location_long" value="<?= htmlspecialchars($location["location_long"]) ?>" required>
         </div>
       </div>
       <div class="row mb-5">
         <div class="col">
           <label for="description" class="form-label">Description*</label>
-          <textarea class="form-control" name="description" style="height: 150px" required><?= $location["description"] ?></textarea>
+          <textarea class="form-control" name="description" style="height: 150px" required><?= htmlspecialchars($location["description"]) ?></textarea>
         </div>
       </div>
       <div class="col">

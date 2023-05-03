@@ -24,11 +24,11 @@ include API . 'organizators_fetch.php';
       <tbody>
         <?php foreach ($organizators as $organizator) : ?>
           <tr>
-            <td><?= $organizator['organizator_id'] ?></td>
-            <td><?= $organizator['organizator_name'] ?></td>
-            <td><a href="index.php?page=user-editor&user_id=<?= $organizator['user_id'] ?>"><?= $organizator['user_id'] ?></a></td>
-            <td><a class="btn btn-primary py-0 px-1" href="index.php?page=organizator-editor&organizator_id=<?= $organizator['organizator_id'] ?>">E</a></td>
-            <td><a class="btn btn-danger py-0 px-1" href="./src/api/organizator_delete.php?organizator_id=<?= $organizator['organizator_id'] ?>">X</a></td>
+            <td><?= htmlspecialchars($organizator['organizator_id']) ?></td>
+            <td><?= htmlspecialchars($organizator['organizator_name']) ?></td>
+            <td><a href="index.php?page=user-editor&user_id=<?= htmlspecialchars($organizator['user_id']) ?>"><?= htmlspecialchars($organizator['user_id']) ?></a></td>
+            <td><a class="btn btn-primary py-0 px-1" href="index.php?page=organizator-editor&organizator_id=<?= htmlspecialchars($organizator['organizator_id']) ?>">E</a></td>
+            <td><a class="btn btn-danger py-0 px-1" href="./src/api/organizator_delete.php?organizator_id=<?= htmlspecialchars($organizator['organizator_id']) ?>">X</a></td>
           </tr>
         <?php endforeach ?>
       </tbody>
